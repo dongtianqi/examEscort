@@ -1,0 +1,52 @@
+<!--step3.wxml 联系人-->
+<view class="step3-container">
+<view class="all-wapper" bindtap="selectAll">
+<view class="icon" wx:if="{{isSelState}}">
+<icon wx:if="{{isSelectAll}}" type="success_circle" size="20"/>
+<icon wx:else type="circle" size="20"/>
+</view>
+<text class="selectAll">全部联系人</text>
+<view wx:if="{{isSelState}}" catchtap="cancel" hover-class="bthover" class="cancel">取消</view>
+<view wx:if="{{isSelState}}" catchtap="edit" class="cancel" hover-class="bthover">发送</view>
+<image wx:else src="../img/allMsg.svg" class="allMsg"></image>
+</view>
+
+<view class="group" wx:for="{{groupList}}">
+
+<view class="groupName" catchtap="groSelEvent" data-groupindex="{{index}}">
+<view class="icon" wx:if="{{isSelState}}">
+<icon wx:if="{{item.isGroupSel}}" type="success_circle" size="20"/>
+<icon wx:else type="circle" size="20"/>
+</view>
+
+<text class="gro-name">{{item.groupName}}</text>
+</view>
+<view class="" wx:if="{{items.isPersonShow}}"  wx:for="{{item.personList}}" wx:for-item="items">
+
+<view class="person" data-tel="{{items.tel}}" bindtap="perSelEvent">
+<view class="icon" wx:if="{{isSelState}}">
+<icon wx:if="{{items.isPersonSel}}" type="success_circle" size="20"/>
+<icon wx:else type="circle" size="20"/>
+</view>
+
+<view class="fam-name">{{items.familyName}}</view>
+<text class="name">{{items.name}}</text>
+<image wx:if="{{!isSelState}}" src="../img/tel.svg" data-tel="{{items.tel}}" bindtap="tel" class="tel"></image>
+<image wx:else src="" class="tel"></image>
+
+<image wx:if="{{!isSelState}}" src="../img/msg.svg" data-tel="{{items.tel}}" bindtap="msg" class="msg"></image>
+<image wx:else src="" class="msg"></image>
+</view>
+</view>
+</view>
+  <modal title="信息" wx:if="{{modalHidden}}"confirm-text="" no-cancel>
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <textarea name="textarea" style="border:1rpx solid #d3d3d3;border-radius:10rpx; width:95%;margin:auto;"/>
+    <view class="btarea">
+        <button class="bt" type="primary" formType="submit">确定</button>
+    <button class="bt" formType="reset">取消</button>
+    </view>
+    </form>
+  </modal>
+</view>
+

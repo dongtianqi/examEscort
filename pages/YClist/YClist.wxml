@@ -1,0 +1,8 @@
+<view class="wrapper">
+<view class="li" wx:for="{{dataList}}">
+<label class="label">签到时间：</label>
+<view class="name">{{item.time}}</view>
+<label class="label">签到地点：</label>
+<view class="name">{{item.pos}}</view>
+</view>
+</view>

@@ -1,0 +1,58 @@
+
+.step3-container{
+height:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:space-between;
+padding:200rpx 0;
+box-sizing:border-box;
+font-size:14px;
+}
+
+.input{
+background: #f3f3f4;
+height: 80rpx;
+padding:10rpx 20rpx;
+box-sizing: border-box;
+margin-top: 20rpx;
+}
+radio-group{
+  margin-top: 20rpx;
+}
+.radio{
+  font-size: 12px;
+  color:#707070;
+}
+.photo {
+  font-size: 12px;
+  line-height: 80rpx;
+  background: #f3f3f4;
+border-radius:20rpx;
+height: 80rpx;
+box-sizing: border-box;
+text-align: center;
+width:50%;
+margin-left: 170rpx;
+margin-top: 30rpx;
+color: #707070;
+}
+.label{
+  font-size: 12px;
+display: block;
+color: #707070;
+}
+.tr{
+  margin-top:20rpx;
+}
+form {
+width:85%;
+}
+ .btarea{
+margin-top: 30rpx;
+
+}
+.bt{
+margin: 20rpx 0;
+font-size: 14px;
+} 

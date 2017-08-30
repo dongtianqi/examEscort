@@ -1,0 +1,46 @@
+{
+  "groupList": [
+    {
+      "groupName": "常用联系人",
+      "isGroupSel": false,
+      "personList": [
+        {
+          "familyName": "张",
+          "name": "张三",
+          "tel": "15116957120",
+          "isPersonSel": false
+        },
+        {
+          "familyName": "李",
+          "name": "李四",
+          "tel": "15116957121",
+          "isPersonSel": false
+        },
+        {
+          "familyName": "李",
+          "name": "李四",
+          "tel": "15116957126",
+          "isPersonSel": false
+        }
+      ]
+    },
+    {
+      "groupName": "bu常用联系人",
+      "isGroupSel": false,
+      "personList": [
+        {
+          "familyName": "张",
+          "name": "张三",
+          "tel": "15116957122",
+          "isPersonSel": false
+        },
+        {
+          "familyName": "李",
+          "name": "李四",
+          "tel": "15116957123",
+          "isPersonSel": false
+        }
+      ]
+    }
+  ]
+}

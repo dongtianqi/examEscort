@@ -1,0 +1,11 @@
+<!--qpage.wxml-->
+<view class="classname">
+<image style="width:60rpx;height:70rpx;padding:0 20rpx;"   src="../img/saoma.svg" bindtap="saoma"></image>
+<input class="input" placeholder="请输入{{ }}"  bindinput="bindKeyInput"/>
+<image class="img" src="../img/search.svg"></image>
+<text class="search"  bindtap="search">搜索</text>
+
+<view wx:if="{{}}" class="table">
+
+</view>
+</view>

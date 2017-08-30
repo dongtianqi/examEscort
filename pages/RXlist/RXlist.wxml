@@ -1,0 +1,26 @@
+<!--BMlist.wxml-->
+<view class="wapper">
+<view class="list clearfix" wx:for="{{dataList}}" data-index="{{index}}" bindtap="toDetail">
+<image class="photo" src=""></image>
+<view class="info-wapper">
+<view class="tr">
+<label class="label">姓名：</label>
+<view class="name">{{item.name}}</view>
+</view>
+<view class="tr">
+<label class="label">性别：</label>
+<view class="name">{{item.sex}}</view>
+</view>
+<view class="tr">
+<label class="label">网报号：</label>
+<view class="name">{{item.num}}</view>
+</view>
+<view class="tr">
+<label class="label">出生日期：</label>
+<view class="name">{{item.date}}</view>
+</view>
+</view>
+</view>
+
+
+</view>

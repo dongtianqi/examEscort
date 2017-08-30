@@ -1,0 +1,25 @@
+/* qpage.wxss */
+.img{
+width:44rpx;
+height:36rpx;
+position:absolute;
+top:18rpx;
+left:122rpx;
+
+}
+.input{
+  height:50rpx;
+  position:relative;
+  display:inline-block; 
+  padding:5rpx 70rpx;
+  background:#f3f3f4;
+  border-radius:70rpx;
+}
+.search{
+  display:inline-block;
+  padding:22rpx 30rpx 0 0;
+  width:75rpx;
+  font-size:14px;
+  float:right;
+  color: #333333;
+}

@@ -1,0 +1,28 @@
+<view class="wrapper">
+<view class="ul" wx:for="{{dataList}}">
+<view class="li">
+<label class="label">姓名：</label>
+<view class="name">{{item.name}}</view>
+</view>
+<view class="li">
+<label class="label">性别：</label>
+<view class="name">{{item.sex}}</view>
+</view>
+<view class="li">
+<label class="label">准考证号：</label>
+<view class="name">{{item.zkz}}</view>
+</view>
+<view class="li">
+<label class="label">出生日期：</label>
+<view class="name">{{item.date}}</view>
+</view>
+<view class="li">
+<label class="label">签到时间：</label>
+<view class="name">{{item.time}}</view>
+</view>
+<view class="li">
+<label class="label">签到地点：</label>
+<view class="name">{{item.pos}}</view>
+</view>
+</view>
+</view>
