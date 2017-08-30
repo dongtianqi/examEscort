@@ -1,14 +1,14 @@
 <!--step3.wxml 联系人-->
 <view class="step3-container">
-<view class="all-wapper" bindtap="selectAll">
-<view class="icon" wx:if="{{isSelState}}">
+<view class="all-wapper">
+<view bindtap="selectAll" class="icon" wx:if="{{isSelState}}">
 <icon wx:if="{{isSelectAll}}" type="success_circle" size="20"/>
 <icon wx:else type="circle" size="20"/>
 </view>
 <text class="selectAll">全部联系人</text>
 <view wx:if="{{isSelState}}" catchtap="cancel" hover-class="bthover" class="cancel">取消</view>
 <view wx:if="{{isSelState}}" catchtap="edit" class="cancel" hover-class="bthover">发送</view>
-<image wx:else src="../img/allMsg.svg" class="allMsg"></image>
+<image bindtap="selectAll" wx:if="{{!isSelState&&quanXian}}" src="../img/allMsg.svg" class="allMsg"></image>
 </view>
 
 <view class="group" wx:for="{{groupList}}">
@@ -23,7 +23,7 @@
 </view>
 <view class="" wx:if="{{items.isPersonShow}}"  wx:for="{{item.personList}}" wx:for-item="items">
 
-<view class="person" data-tel="{{items.tel}}" bindtap="perSelEvent">
+<view class="person" data-tel="{{items.tel}}" data-id="{{items.linkManId}}" bindtap="perSelEvent">
 <view class="icon" wx:if="{{isSelState}}">
 <icon wx:if="{{items.isPersonSel}}" type="success_circle" size="20"/>
 <icon wx:else type="circle" size="20"/>
@@ -34,7 +34,7 @@
 <image wx:if="{{!isSelState}}" src="../img/tel.svg" data-tel="{{items.tel}}" bindtap="tel" class="tel"></image>
 <image wx:else src="" class="tel"></image>
 
-<image wx:if="{{!isSelState}}" src="../img/msg.svg" data-tel="{{items.tel}}" bindtap="msg" class="msg"></image>
+<image wx:if="{{!isSelState&&quanXian}}" src="../img/msg.svg" data-tel="{{items.tel}}" data-id="{{items.id}}" bindtap="msg" class="msg"></image>
 <image wx:else src="" class="msg"></image>
 </view>
 </view>

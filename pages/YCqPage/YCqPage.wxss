@@ -16,6 +16,12 @@ page{
 }
 
 .label,.name{
+  box-sizing: border-box;
   display: inline-block;
-  padding: 20rpx;
+  padding: 14rpx;
+  word-wrap: break-word;
+  vertical-align:text-top;
+}
+.name{
+width: 75%;
 }

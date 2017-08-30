@@ -1,4 +1,6 @@
+/* BMdetail.wxss */
 /* BMlist.wxss */
+@import "../../utils/weui.wxss";
 page{
   height:100%;
 }
@@ -15,10 +17,11 @@ page{
     margin-top: 8px;
 }
 .photo{
+  display: block;
   box-sizing: border-box;
-  float:left;
   width: 100px;
   height: 110px;
+  margin: auto;
   /* border: 1px solid red; */
 }
 .name{
@@ -31,7 +34,32 @@ float:left;
 box-sizing: border-box;
 }
 .tr{
-
-padding: 5px;
+   /* border-bottom: 1px dashed #ccc;  */
+padding: 6px;
   display: block;
 }
+.input{
+background: #f3f3f4;
+height: 80rpx;
+padding:10rpx 20rpx;
+box-sizing: border-box;
+margin-top: 20rpx;
+}
+.picker{
+  background: #f3f3f4;
+height: 100rpx;
+padding:10rpx 20rpx;
+box-sizing: border-box;
+margin-top: 20rpx;
+}
+form {
+width:85%;
+}
+ .btarea{
+margin-top: 30rpx;
+
+}
+.bt{
+margin: 20rpx 0;
+font-size: 14px;
+} 

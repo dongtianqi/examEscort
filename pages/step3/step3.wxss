@@ -7,7 +7,7 @@
 .group {
   position:relative;
   padding:30rpx 0 40rpx; 
-  border-top: 1px solid #808080;
+  border-top: 1px solid #ccc;
   flex: 1;
 }
 .person{
@@ -84,7 +84,7 @@ line-height: 30px;
     color: white;
     display: inline-block;
     float: right;
-    margin-right: 4rpx;
+    margin-right: 14rpx;
     width: 70rpx;
     height: 34rpx;
     background: #3CB371;

@@ -1,8 +1,13 @@
 // step1.js
 var util = require('../../utils/util.js')
+// 引用百度地图微信小程序JSAPI模块 
+var bmap = require('../../utils/bmap-wx.js');
+var app = getApp();
+var weburl = app.globalData.weburl;
 Page({
   onPullDownRefresh: function () {
     console.log("刷新")
+    this.SJZajax();
     wx.stopPullDownRefresh()
   },
   /**
@@ -10,49 +15,47 @@ Page({
    */
   data: {
   showTitle:false,
-  modalHidden:false,
-  timeList:[
-    {time:"2017-09-08 12:00",
-    person:"张三",
-    tel:"18209876781",
-    done:"做了什么做了什么做了什么做了什么做了什么做了什么做了什么"},
-    {
-      time: "2017-09-03 13:00",
-      person: "张三",
-      tel: "18209876782",
-      done: "做了什么shi"
-    },
-    {
-      time: "2017-09-03 14:00",
-      person: "张三",
-      tel: "18209876783",
-      done: "做了什么333"
-    },
-    {
-      time: "2017-09-08 12:00",
-      person: "张三",
-      tel: "18209876781",
-      done: "做了什么"
-    },
-    {
-      time: "2017-09-08 12:00",
-      person: "张三",
-      tel: "18209876781",
-      done: "做了什么"
-    },
-    {
-      time: "2017-09-08 12:00",
-      person: "张三",
-      tel: "18209876781",
-      done: "做了什么"
-    },
-  ]
+  modalHidden:false
+  // ,timeList:[
+  //   {time:"2017-09-08 12:00",
+  //     linkman:"张三",
+  //   tel:"18209876781",
+  //   message:"十点集合"},
+  //   {
+  //     time: "2017-09-03 13:00",
+  //     person: "张三",
+  //     tel: "18209876782",
+  //     done: "做了什么shi"
+  //   },
+  //   {
+  //     time: "2017-09-03 14:00",
+  //     person: "张三",
+  //     tel: "18209876783",
+  //     done: "做了什么333"
+  //   },
+  //   {
+  //     time: "2017-09-08 12:00",
+  //     person: "张三",
+  //     tel: "18209876781",
+  //     done: "做了什么"
+  //   },
+  //   {
+  //     time: "2017-09-08 12:00",
+  //     person: "张三",
+  //     tel: "18209876781",
+  //     done: "做了什么"
+  //   },
+  //   {
+  //     time: "2017-09-08 12:00",
+  //     person: "张三",
+  //     tel: "18209876781",
+  //     done: "做了什么"
+  //   },
+  // ]
   },
   onLoad: function (options) {
     try {
       var value = wx.getStorageSync('logined');
-      // var lastTime = wx.getStorageSync('lastTime');
-      // var position = wx.getStorageSync('position');
       // console.log("首页加载时getstorage的value:"+value)
    //判断是否第一次登陆
       if (!value) {
@@ -60,16 +63,10 @@ Page({
           url: '../login/login'
         });
       }
-//       //如果没网，签到时间地点从本地获取
-//       if (lastTime && popsition){
-// this.setData({
-//   lastTime: lastTime,
-//   popsition:position
-// })
-//       }
     } catch (e) {
       console.log("首页getStorage的异常原因："+e)
     }
+
     //获取设备信息
     wx.getSystemInfo({
       success: res => {
@@ -78,19 +75,12 @@ Page({
         })
       }
     }) 
+    //获取时间轴数据
+   this.SJZajax();
     //自动签到
     this.qiandao();
-    //用websocket获取时间轴数据
-    // wx.connectSocket({
-    //   url: 'test.php'
-    // })
-
-    // wx.onSocketMessage((res) => {
-    //   console.log('收到服务器内容：' + res.data)
-    //   this.setData({
-    //     timeList:res.data
-    //   })
-    // })
+    //获取天气
+    this.getWeather();
   },
   /**
  * 生命周期函数--监听页面显示
@@ -104,34 +94,66 @@ Page({
       var position = wx.getStorageSync('position');
       console.log("首页显示时getstorage的value:" + value + lastTime + position)
       //如果没网，签到时间地点从本地获取
-
         this.setData({ 
           username: username,
           role: role,
           lastTime: lastTime,
-          position: position
+          position: position,
         })
       
     } catch (e) {
       console.log("首页getStorage的异常原因：" + e)
     }
   },
-  //屏幕卷去高度时触发
-  scroll :function(e){
-    var scrollTop = e.detail.scrollTop;
-    if (scrollTop >= 0 && scrollTop<200){
-      this.setData({
-         //opacity: 1 - scrollTop/162,
-        showTitle:false
-      });
-    }else if (scrollTop >= 200){
-      this.setData({
-         //opacity:0,
-        showTitle:true
-      });
+    //获取时间轴数据
+SJZajax:function(){
+  console.log("下拉刷新ajax")
+  wx.showLoading({
+    title: '加载中',
+  })
+  try{
+  var userid = wx.getStorageSync('userid');
+  console.log(userid)
+  wx.request({
+    url: weburl +'SHSFKS/wx/findWxSmsInfoByLinkManId.action',
+    data: {
+      "linkManVo.id": userid
+    },
+    header: { "Content-Type": "application/x-www-form-urlencoded" },
+    method: 'POST',
+    dataType: '',
+    success: (res) => {
+      console.log("时间轴后台返回", res.data)
+      if (res.data != null) {
+        if (res.data.dataStatus == "1") {
+          this.setData({
+            timeList: res.data.dataMain
+          });
+        } else {
+          if (res.data.errorMsg != null
+            && res.data.errorMsg.length > 0) {
+            wx.showToast({
+              title: res.data.errorMsg,
+              duration: 2000
+            })
+          }
+        }
+      }
+    },
+    fail: (res) => {
+      wx.showToast({
+        title: '获取列表信息失败，请检查网络连接',
+        duration: 2000
+      })
+      return;
+    },
+    complete : () => {
+      wx.hideLoading();
     } 
- 
-  },
+  })
+  } catch (e) {
+  }
+},
   //事件处理函数
   toBMqPage: function () {
     wx.navigateTo({
@@ -148,9 +170,9 @@ Page({
       url: '../WJfPage/WJfPage'
     })
   },
-  toJJfPage:function(){
+  toJJqPage:function(){
     wx.navigateTo({
-      url: '../JJfPage/JJfPage'
+      url: '../JJqPage/JJqPage'
     })
   },
   //二
@@ -166,6 +188,7 @@ Page({
   },
     //获取位置
   getLocation:function(){
+
       wx.getLocation({
         type: 'wgs84',
         success: (res) => {
@@ -176,137 +199,251 @@ Page({
             latitude: latitude,
             longitude: longitude
           });
-          this.QDajax();
-        }
-      })
-  },
-  getSystemInfo:function(){
-    //获取设备型号
-    wx.getSystemInfo({
-      success: res => {
-        var model=res.model;
-        this.setData({
-          model: model
+          this.getWeather();
+          this.getAddress();
+  }
+      });
+      },
+      getAddress :function(){
+        // 新建百度地图对象 
+        var BMap = new bmap.BMapWX({
+          ak: 'KxvCAjHu94fsEDMBYtrUMt8e5QDWqPc2'
         });
-        this.getLocation();
-      }
-    })
-  },
+        // 发起regeocoding检索请求 
+        BMap.regeocoding({
+          //location: this.data.latitude + "," +this.data.longitude,
+          fail: (data) => {
+            console.log("解析地址失败" + data)
+              wx.showToast({
+                title: '签到失败，请检查网络连接',
+                duration: 2000
+              })
+              return;    
+          },
+          success: (data) => {
+            this.setData({
+              markers: data.wxMarkerData
+            });
+            this.QDajax();
+          }
+        })
+      },
+      getWeather: function(){
+        // 新建百度地图对象 
+        var BMap = new bmap.BMapWX({
+          ak: 'KxvCAjHu94fsEDMBYtrUMt8e5QDWqPc2'
+        });
+        // 发起regeocoding检索请求 
+        BMap.weather({
+          //location: this.data.latitude + "," + this.data.longitude,
+          success: (data) => {
+            console.log(data)
+            this.setData({
+              temperature: data.currentWeather[0].temperature,
+              weatherDesc: data.currentWeather[0].weatherDesc
+            });
+          },
+          fail: (data) => {
+            console.log("解析天气失败" + data.errMsg + data.statusCode)
+            console.log("解析天气失败:" + this.data.latitude + "," + this.data.longitude)
+          }
+        });
+      },
   QDajax:function(){
     var date = new Date();
     var datefm = util.formatTime(date);
-    var data = {
-      date: datefm,
-      latitude: this.data.latitude,
-      longitude: this.data.longitude,
-      model: this.data.model
-    }
-    console.log("签到前端传值：" + data.date + "维度：" + data.latitude + "精度：" + data.longitude + "手机" + data.model)
-
-    wx.request({
-      url: '',
-      data: data,
-      header: { 'content-type': 'application/json' },
-      method: 'POST',
-      dataType: '',
-      success: (res) => {
-        try {
-          wx.setStorageSync('lastTime', datefm);
-          wx.setStorageSync('position', res.position);
-        } catch (e) {
+    try {
+      var userid = wx.getStorageSync('userid')
+      var openid = wx.getStorageSync('openid')
+      if (userid) {
+        var data = {
+          //date: datefm,
+          "linkManVo.lastLoginAddr": this.data.markers[0].address,
+          "linkManVo.lastLoginLat": this.data.latitude,
+          "linkManVo.lastLoginLng": this.data.longitude,
+          "linkManVo.id": userid,
+          "linkManVo.weixinId": openid
         }
-        this.setData({
-          lastTime: datefm,
-          position: res.position
-        });
-        wx.showToast({
-          title: '签到成功',
-          duration: 2000
-        })
-      },
-      fail: (res) => {
-        wx.showToast({
-          title: '签到失败，请检查网络连接',
-          duration: 2000
-        })
-        return;
-      }
+        console.log("签到前端传值：", data)
+
+        wx.request({
+          url: weburl +'SHSFKS/wx/findLinkManLogin.action',
+          data: data,
+          header: { "Content-Type": "application/x-www-form-urlencoded" },
+          method: 'POST',
+          dataType: '',
+          success: (res) => {
+            console.log("签到后台返回", res.data)
+            if (res.data != null) {
+              if (res.data.dataStatus == "1") {
+            try {
+              wx.setStorageSync('lastTime', datefm);
+              wx.setStorageSync('position', data["linkManVo.lastLoginAddr"]);
+            } catch (e) {
+            }
+            this.setData({
+              lastTime: datefm,
+              position: data["linkManVo.lastLoginAddr"]
+            });
+            wx.showToast({
+              title: '签到成功',
+              duration: 2000
+            })
+              } else {
+                if (data.errorMsg != null
+                  && data.errorMsg.length > 0) {
+                  wx.showToast({
+                    title: data.errorMsg,
+                    duration: 2000
+                  })
+                }
+              }
+          }},
+          fail: (res) => {
+            wx.showToast({
+              title: '签到失败，请检查网络连接',
+              duration: 2000
+            })
+             return;
+          }
     })
+      }
+    } catch (e) {
+    }
+
+    
   },
 
   qiandao:function(){
     console.log("签到")
-    this.getSystemInfo();
+    this.getLocation();
   },
   toMore:function(){
     wx.switchTab({
       url: '../step2/step2'
     })
   },
+  //回复和详情的ajax,给后台传消息已读状态。
+  repAjax:function(data){
+    wx.request({
+      url: weburl+'SHSFKS/wx/updateReadFlagAndReplyMsg.action',
+      data: data,
+      header: { 'content-type': "application/x-www-form-urlencoded" },
+      method: 'POST',
+      dataType: '',
+      success: (res) => {
+        console.log("rAndDajax返回值：",res)
+        if (res.data != null) {
+          if (res.data.dataStatus == "1" && res.data.dataMain) {
+        wx.showToast({
+          title: res.data.dataMain,
+          duration: 2000
+        })
+        } else {
+          if (data.errorMsg != null
+            && data.errorMsg.length > 0) {
+            wx.showToast({
+              title: data.errorMsg,
+              duration: 2000
+            })
+      }
+      }
+      }
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: "回复失败，请检查网络连接",
+          duration: 2000
+        })
+      }
+    })
+  },
+  //回复和详情的ajax,给后台传消息已读状态。
+  detAjax: function (data, done) {
+    wx.request({
+      url: weburl + 'SHSFKS/wx/updateReadFlagAndFindReplyMsg.action',
+      data: data,
+      header: { 'content-type': "application/x-www-form-urlencoded" },
+      method: 'POST',
+      dataType: '',
+      success: (res) => {
+        console.log("rAndDajax返回值：", res)
+        if (res.data != null) {
+          if (res.data.dataStatus == "1" && res.data.dataMain) {
+            //模态窗
+            var content;
+            var rep = res.data.dataMain;
+            if (rep) {
+              content = done + "\r\n \r\n回复内容:\r\n \r\n" + rep;
+            } else {
+              content = done;
+            }
+            wx.showModal({
+              title: '详情',
+              content: content,
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  // console.log('用户点击确定')
+                }
+              }
+            })
+          } else {
+            if (data.errorMsg != null
+              && data.errorMsg.length > 0) {
+              wx.showToast({
+                title: data.errorMsg,
+                duration: 2000
+              })
+            }
+          }
+        }
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: "回复失败，请检查网络连接",
+          duration: 2000
+        })
+      }
+    })
+  },
   //回复
   reply:function(e){
 var tel = e.target.dataset.tel;
+    var id = e.target.dataset.id;
   this.setData({
     modalHidden: !this.data.modalHidden,
-    telnum:tel
+    telnum:tel,
+    id:id
   });
   } ,
   //
   detail:function(e){
     var done = e.target.dataset.done;
-    console.log("done:"+done);
-    //模态窗
-    wx.showModal({
-      title: '详情',
-      content: done,
-      showCancel:false,
-      success: function (res) {
-        if (res.confirm) {
-         // console.log('用户点击确定')
-        }
-      }
-    })
+    // var rep = e.target.dataset.rep;
+    // console.log("done:"+done);
+    // console.log("rep" + rep)
+    var data = { "smsInfoVo.id": e.target.dataset.id};
+    this.detAjax(data, done);
   },
   formSubmit: function (e) {
     this.setData({
       modalHidden: !this.data.modalHidden
     })
     var data={
-      "tel":this.data.telnum,
-      "textarea": e.detail.value.textarea
+      "smsInfoVo.id": this.data.id,
+      "smsInfoVo.replyMsg": e.detail.value.textarea
     }
-    if (data.textarea && data.tel){
-         wx.request({
-   url: '',
-   data: data,
-   header: { 'content-type': 'application/json'},
-   method: 'POST',
-   dataType: '',
-   success:(res) => {
-    this.setData({
-      telnum:""
-    })
-},
-   fail: (res)=> {
-    this.setData({
-      telnum:""
-    }),
-    wx.showToast({
-           title: '回复信息失败，请检查网络连接',
-           duration: 2000
-         })
-                return;
-}
- })
+    if (data["smsInfoVo.replyMsg"] && data["smsInfoVo.id"]){
+      this.repAjax(data);
     }else{
       wx.showToast({
         title: '回复内容不能为空',
-        image:'./img/warn.svg',
         duration: 2000
       })
        return;
     }
-    console.log("回复传后台数据：" + this.data.telnum, e.detail.value.textarea)
+    console.log("回复传后台数据：" + this.data.id, e.detail.value.textarea)
   },
   formReset: function () {
     this.setData({

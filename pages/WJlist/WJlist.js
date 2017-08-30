@@ -2,6 +2,7 @@
 var app = getApp();
 var weburl = app.globalData.weburl;
 Page({
+
   /**
    * 页面的初始数据
    */
@@ -20,22 +21,22 @@ Page({
       "examineeVo.identity": sfz,
       "examineeVo.examineeName": student
     }
-    console.log("查询前端传值：", data);
+    console.log("wjlist前端传值：", data);
     wx.request({
       url: weburl + 'SHSFKS/wx/findExamineeByInfo.action', //仅为示例，并非真实的接口地址
       data: data,
-      method:"POST",
+      method: "POST",
       header: {
         "content-type": 'application/x-www-form-urlencoded'
       },
       success: res => {
-        console.log("后台查询返回值：", res.data)
+        console.log("后台wjlist返回值：", res.data)
         if (res.data != null) {
           var dataMain = res.data.dataMain;
           if (res.data.dataStatus == "1") {
             if (dataMain && dataMain.length == 1) {
               wx.redirectTo({
-                url: "../BMdetail/BMdetail?zkz=" + dataMain[0].licence
+                url: "../WJdetail/WJdetail?zkz=" + dataMain[0].licence
               })
             } else if (dataMain && dataMain.length > 1) {
               this.setData({
@@ -70,11 +71,11 @@ Page({
   },
   toDetail: function (e) {
     var zkz = e.currentTarget.dataset.zkz;
-    console.log("详情前端获取zkz：", zkz);
+    console.log(zkz);
     // var data = this.data.dataList[index];
     // console.log(data)
     wx.navigateTo({
-      url: "../BMdetail/BMdetail?zkz=" + zkz
+      url: '../WJdetail/WJdetail?zkz=' + zkz
     })
   }
 

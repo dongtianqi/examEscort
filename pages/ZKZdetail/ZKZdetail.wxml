@@ -1,10 +1,10 @@
 <!--BMdetail.wxml-->
 <view class="wapper">
 <view class="list clearfix">
-<image class="photo" src=""></image>
+<image class="photo" src="{{dataList.photoPath}}"></image>
 <view class="tr" style="border-top: 1px dashed #ccc;">
 <label class="label">姓名：</label>
-<view class="name">{{dataList.name}}</view>
+<view class="name">{{dataList.examineeName}}</view>
 </view>
 <view class="tr">
 <label class="label">性别：</label>
@@ -13,36 +13,36 @@
 
 <view class="tr">
 <label class="label">出生日期：</label>
-<view class="name">{{dataList.date}}</view>
+<view class="name">{{dataList.birthday}}</view>
 </view>
 <view class="tr">
 <label class="label">答卷文字：</label>
-<view class="name">{{dataList.djwz}}</view>
+<view class="name">{{dataList.character}}</view>
 </view>
 
 <view class="tr">
 <label class="label">证件号码：</label>
-<view class="name">{{dataList.num}}</view>
+<view class="name">{{dataList.identity}}</view>
 </view>
 <view class="tr">
 <label class="label">准考证号：</label>
-<view class="name">{{dataList.zkz}}</view>
+<view class="name">{{dataList.licence}}</view>
 </view>
 <view class="tr">
 <label class="label">考点名称：</label>
-<view class="name">{{dataList.city}}</view>
+<view class="name">{{dataList.examPlaceName}}</view>
 </view>
 <view class="tr">
 <label class="label">考场地址：</label>
-<view class="name">{{dataList.pos}}</view>
+<view class="name">{{dataList.examPlace}}</view>
 </view>
 <view class="tr">
 <label class="label">考场号：</label>
-<view class="name">{{dataList.kch}}</view>
+<view class="name">{{dataList.examRoom}}</view>
 </view>
 <view class="tr">
 <label class="label">座位号：</label>
-<view class="name">{{dataList.zw}}</view>
+<view class="name">{{dataList.seatNumber}}</view>
 </view>
 
 

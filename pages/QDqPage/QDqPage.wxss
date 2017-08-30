@@ -17,5 +17,8 @@ page{
 
 .label,.name{
   display: inline-block;
-  padding: 20rpx;
+  padding: 14rpx;
+}
+.label{
+  width:100px;
 }

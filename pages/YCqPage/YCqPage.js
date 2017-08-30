@@ -1,43 +1,63 @@
 // YClist.js
+var app = getApp();
+var weburl = app.globalData.weburl;
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    dataList: [
-      {
-        name:"白晨星",
-        sex: "男",
-        zkz: "1324123423",
-        date:"2017-09-31 21：00",
-        pos: "北京市总部基地1",
-        time: "2017-09-31 21：00"
-      }, {
-        name: "白晨星",
-        sex: "男",
-        zkz: "1324123423",
-        date: "2017-09-31 21：00",
-        pos: "北京市总部基地2",
-        time: "2017-09-31 21：00"
-      }
-    ]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: '', //仅为示例，并非真实的接口地址
-      data: {},
-      header: {
-        'content-type': 'application/json'
-      },
-      success: (res) => {
-        console.log(res.data)
-        this.setData({
-          dataList: res.data
-        });
+    try {
+      var userid = wx.getStorageSync('userid')
+      if (userid) {
+        wx.request({
+          url: weburl + 'SHSFKS/wx/findExamException.action', //仅为示例，并非真实的接口地址
+          data: {"examExceptionVo.linkManId": userid},
+          method:"POST",
+          header: {
+            "content-type": 'application/x-www-form-urlencoded'
+          },
+          success: (res) => {
+            console.log("yc查询后台返值：", res)
+            if (res.data != null) {
+              var dataMain = res.data.dataMain;
+             
+              if (res.data.dataStatus == "1") {
+                this.setData({
+                  dataList: dataMain
+                });
+                if (dataMain.length== 0){
+                  wx.showToast({
+                    title: "查询结果为空",
+                    duration: 2000
+                  })
+                }
+              }
+              else {
+                if (res.data.errorMsg != null
+                  && res.data.errorMsg.length > 0) {
+                  wx.showToast({
+                    title: res.data.errorMsg,
+                    duration: 2000
+                  })
+                }
+              }
+            }
+          },
+          fail: (res) => {
+            wx.showToast({
+              title: '查询失败，请检查网络连接',
+              duration: 2000
+            })
+            return;
+          }
+        })
       }
-    })
+    } catch (e) {
+    }
   }
 })

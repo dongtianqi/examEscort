@@ -27,10 +27,12 @@ Page({
   search: function (e) {
     //请求数据
     var data = e.detail.value;
-    console.log(e.detail.value)
-    if (data.zkz||data.sfz||data.student){
+    var zkz = data.zkz.trim();
+    var sfz = data.sfz.trim();
+    var student = data.student.trim();
+    if (zkz || sfz || student) {
 wx.redirectTo({
-  url: '../BMlist/BMlist?sfz=' + data.sfz + '&zkz=' + data.zkz + '&student=' + data.student
+  url: '../BMlist/BMlist?sfz=' + sfz + '&zkz=' + zkz + '&student=' + student
 })
     }else{
       wx.showToast({

@@ -15,21 +15,23 @@
     "pages/YCfPage/YCfPage",
     "pages/QDqPage/QDqPage",
     "pages/JJqPage/JJqPage",
-    "pages/JJfPage/JJfPage",
     "pages/WJqPage/WJqPage",
     "pages/YCqPage/YCqPage",
     "pages/ZKZlist/ZKZlist",
     "pages/ZKZdetail/ZKZdetail",
     "pages/RXlist/RXlist",
     "pages/RXdetail/RXdetail",
-    "pages/YClist/YClist"
+    "pages/WJlist/WJlist",
+    "pages/WJdetail/WJdetail",
+    "pages/SJCFfPage/SJCFfPage",
+    "pages/SJDDfPage/SJDDfPage"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "上海司法考试",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh":"true"
+    "enablePullDownRefresh": "true"
   },
   "tabBar": {
     "selectedColor": "#1296db",

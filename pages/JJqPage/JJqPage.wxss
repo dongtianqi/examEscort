@@ -12,10 +12,20 @@ page{
   color: #707070;
   margin-top: 8px;
   background: #FFF;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .label,.name{
+  box-sizing: border-box;
   display: inline-block;
-  padding: 20rpx;
+  padding: 14rpx;
+  word-wrap: break-word;
+  vertical-align:text-top;
+}
+.label{
+  width: 30%;
+}
+.name{
+width: 70%;
+text-align: left;
 }

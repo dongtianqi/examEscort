@@ -26,6 +26,8 @@ App({
   //   }
   // },
   globalData:{
+    weburl:"https://sinotn.imwork.net/",
+     //weburl:"http://192.168.12.195/",
     userInfo:null
   }
 })

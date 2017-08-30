@@ -1,19 +1,32 @@
+
 <!--fpage.wxml-->
 <view class="step3-container" style="padding:20rpx 0">
 <form bindsubmit="formSubmit" bindreset="formReset">
-<view class="tr">
- <label class="label">异常名称：</label>
- <input name="examExceptionVo.exceptionName" class="input" placeholder=""/>
-</view>
- <view class="tr">
-   <label class="label">异常描述:</label>
- <input name="examExceptionVo.exceptionDescript" class="input" placeholder=""/>
+   <view class="tr">
+<view class="">试卷出发登记</view>
+ </view>
+  <view class="tr">
+ <label class="label">登记时间：</label>
+<view class="time">{{time}}</view>
  </view>
  <view class="tr">
-  <label class="label">考点名称:</label>
- <input name="examExceptionVo.examPlaceName" class="input" placeholder=""/>
+  <label class="label">登记地点:</label>
+ <view name="addr" class="addr">{{markers[0].address}}</view>
  </view>
-<!-- 照片 -->
+  <view class="tr">
+  <label class="label">科目:</label>
+  <picker class="input" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      {{array[index]}}
+    </view>
+  </picker>
+ </view>  
+ <!-- <view class="tr" hidden  style="position:relative;">
+  <label class="label">当前位置:</label>
+  <input name="location" class="input" placeholder="" 
+  value="{{location.latitude}},{{location.longitude}}"/>
+ </view> -->
+ <!-- 照片 -->
 
 
   <view class="page-body">
@@ -75,10 +88,10 @@
       </view>
   </view>
 
-
  <!-- <view name="photo" class="photo"  bindtap="choosePhoto">
  + 选择要上传的图片
  </view> -->
+
 
  <view class="btarea">
      <button formType="submit" class="bt" type="primary">提交</button>

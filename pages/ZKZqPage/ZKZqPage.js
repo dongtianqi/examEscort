@@ -27,9 +27,12 @@ Page({
   search: function (e) {
     //请求数据
     var data = e.detail.value;
-    if (data.zkz || data.sfz || data.student) {
+    var zkz = data.zkz.trim();
+    var sfz = data.sfz.trim();
+    var student = data.student.trim();
+    if (zkz || sfz || student) {
       wx.redirectTo({
-        url: '../ZKZlist/ZKZlist?zkz=' + data.zkz + '&sfz' + data.sfz + '&student' + data.student
+        url: "../ZKZlist/ZKZlist?zkz=" + zkz + "&sfz=" + sfz + "&student=" + student
       })
     } else {
       wx.showToast({

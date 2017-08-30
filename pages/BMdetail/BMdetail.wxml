@@ -2,47 +2,47 @@
 <view class="wapper">
 <view class="list clearfix">
 
-<image class="photo" src=""></image>
+<image class="photo" src="{{dataList.photoPath}}"></image>
 
 <view class="tr" style=" border-top: 1px dashed #ccc;">
 <label class="label">网报号：</label>
-<view class="name">{{dataList.wbh}}</view>
+<view class="name">{{dataList.examineeId}}</view>
 </view>
 <view class="tr">
 <label class="label">报名地：</label>
-<view class="name">{{dataList.city}}</view>
+<view class="name">{{dataList.EXAM_REGISTER_NAME}}</view>
 </view>
 <view class="tr">
 <label class="label">姓名：</label>
-<view class="name">{{dataList.name}}</view>
+<view class="name">{{dataList.examineeName}}</view>
 </view>
 <view class="tr">
 <label class="label">性别：</label>
 <view class="name">{{dataList.sex}}</view>
 </view>
 <view class="tr">
-<label class="label">身份证类别：</label>
-<view class="name">{{dataList.sfzlb}}</view>
+<label class="label">证件类别：</label>
+<view class="name">{{dataList.IDENTITY_TYPE}}</view>
 </view>
 <view class="tr">
 <label class="label">身份证号：</label>
-<view class="name">{{dataList.sfz}}</view>
+<view class="name">{{dataList.identity}}</view>
 </view>
 <view class="tr">
 <label class="label">出生日期：</label>
-<view class="name">{{dataList.date}}</view>
+<view class="name">{{dataList.birthday}}</view>
 </view>
 <view class="tr">
 <label class="label">民族：</label>
-<view class="name">{{dataList.nation}}</view>
+<view class="name">{{dataList.NATIONALITY}}</view>
 </view>
 <view class="tr">
 <label class="label">户籍所在地：</label>
-<view class="name">{{dataList.hjszd}}</view>
+<view class="name">{{dataList.REGISTER_CITY}}</view>
 </view>
 <view class="tr">
 <label class="label">学历：</label>
-<view class="name">{{dataList.education}}</view>
+<view class="name">{{dataList.LEARING}}</view>
 </view>
 <view class="tr">
 <label class="label">党派：</label>
@@ -54,7 +54,7 @@
 </view>
 <view class="tr">
 <label class="label">毕业院校：</label>
-<view class="name">{{dataList.school}}</view>
+<view class="name">{{dataList.COLLEGE_NAME}}</view>
 </view>
 <view class="tr">
 <label class="label">毕业时间：</label>
@@ -62,7 +62,7 @@
 </view>
 <view class="tr">
 <label class="label">从业状况：</label>
-<view class="name">{{dataList.cyzk}}</view>
+<view class="name">{{dataList.PRACTITION}}</view>
 </view>
 <view class="tr">
 <label class="label">工作单位：</label>

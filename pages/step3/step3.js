@@ -1,115 +1,93 @@
 // step3.js
+var app = getApp();
+var weburl = app.globalData.weburl;
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    quanXian:false,
     modalHidden:false,
     isSelState:false,
     isSelectAll:false,
     msgNums:[],
-    groupList:   [
-        {
+    msgIds:[]
 
-          "groupName": "常用联系人",
-          "isGroupSel": false,
-          "personList": [
-            {
-              "familyName": "张",
-              "name": "张三",
-              "tel": "15116957120",
-              "isPersonShow":false,
-              "isPersonSel": false
-            },
-            {
-              "familyName": "李",
-              "name": "李四",
-              "tel": "15116957121",
-              "isPersonShow": false,
-              "isPersonSel": false
-            },
-            {
-              "familyName": "李",
-              "name": "李四",
-              "tel": "15116957126",
-              "isPersonShow": false,
-              "isPersonSel": false
-            }
-          ]
-        },
-        {
-          "groupName": "bu常用联系人",
-          "isGroupSel": false,
-          "isGroupShow": true,
-          "personList": [
-            {
-              "familyName": "张",
-              "name": "张yi1",
-              "tel": "15116957122",
-              "isPersonShow": false,
-              "isPersonSel": false
-            },
-            {
-              "familyName": "李",
-              "name": "李四",
-              "tel": "15116957123",
-              "isPersonShow": false,
-              "isPersonSel": false
-            },
-            {
-              "familyName": "张",
-              "name": "张yi1",
-              "tel": "15116347122",
-              "isPersonShow": false,
-              "isPersonSel": false
-            },
-            {
-              "familyName": "李",
-              "name": "李四",
-              "tel": "15114557123",
-              "isPersonShow": false,
-              "isPersonSel": false
-            },
-            {
-              "familyName": "张",
-              "name": "张yi1",
-              "tel": "18716957122",
-              "isPersonShow": false,
-              "isPersonSel": false
-            },
-            {
-              "familyName": "李",
-              "name": "李四",
-              "tel": "10916957123",
-              "isPersonShow": false,
-              "isPersonSel": false
-            }
-          ]
-        }
-      ]
+  },
+  onPullDownRefresh: function () {
+    console.log("刷新")
+    this.getLXR();
+    wx.stopPullDownRefresh()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.request({
-    //   url: 'http://127.0.0.1:8020/%E6%94%AF%E4%BB%98/groupJson.json', //仅为示例，并非真实的接口地址
-    //   data: {
-    //     x: '',
-    //     y: ''
-    //   },
-    //   header: {
-    //     'content-type': 'application/json'
-    //   },
-    //   success:(res) => {
-    //     console.log(res.data)
-    //     this.setData({
-    //       groupList: res.data.groupList
-    //     });
-    //   }
-    // })
-  
+    try {
+      var roleCode = wx.getStorageSync('roleCode')
+      var username = wx.getStorageSync('username')
+      var userid = wx.getStorageSync('userid')
+      if (roleCode == '1' || roleCode == '2' || roleCode == '3') {
+        this.setData({
+          quanXian: true,
+          userid: userid,
+          username: username
+        })
+      }
+    } catch (e) {
+    }
+    this.getLXR();
   }, 
+  getLXR:function(){
+    wx.showLoading({
+      title: '加载中',
+    })
+    try {
+      var value = wx.getStorageSync('userid')
+      var data = {
+        "linkManVo.id": value
+      }
+      if (value) {
+        wx.request({
+          url: weburl + 'SHSFKS/wx/findWxLinkManJsonList.action', //仅为示例，并非真实的接口地址
+          data: data,
+          header: {
+            'content-type': 'application/json'
+          },
+          success: (res) => {
+            console.log("联系人：", res.data)
+            if (res.data != null) {
+              if (res.data.dataStatus == "1") {
+                this.setData({
+                  groupList: res.data.dataMain
+                });
+              } else {
+                if (res.data.errorMsg != null
+                  && res.data.errorMsg.length > 0) {
+                  wx.showToast({
+                    title: res.data.errorMsg,
+                    duration: 2000
+                  })
+                }
+              }
+            }
+          },
+          fail: (res) => {
+            wx.showToast({
+              title: '加载联系人失败，请检查网络连接',
+              duration: 2000
+            })
+            return;
+          },
+          complete: () =>{
+            wx.hideLoading();
+          }
+        })
+      }
+    } catch (e) {
+    }
+  },
+
   tel :function(e){
 var tel = e.target.dataset.tel;
 console.log(e)
@@ -119,11 +97,15 @@ wx.makePhoneCall({
   },
   msg : function (e) {
     var tel = e.target.dataset.tel;
+    var id = e.target.dataset.id;
     var msgNums=this.data.msgNums;
+    var msgIds = this.data.msgIds;
     msgNums[0]=tel;
+    msgIds[0] = id;
     this.setData({
       modalHidden: !this.data.modalHidden,
-      msgNums:msgNums
+      msgNums:msgNums,
+      msgIds: msgIds
     });
 
   },
@@ -133,24 +115,24 @@ wx.makePhoneCall({
       var groupList = this.data.groupList;
       var isGroupSel= groupList[groupindex].isGroupSel = !groupList[groupindex].isGroupSel; 
       var personList = groupList[groupindex].personList;
-      var length = personList.length;
       //如果不是选择状态
-      if (!this.data.isSelState){
-      for (var i = 0; i < length; i++) {    
+      if (!this.data.isSelState && personList){
+        for (var i = 0; i < personList.length; i++) {
         personList[i].isPersonShow = !personList[i].isPersonShow;
       }
       }
 
       //如果选中状态，组内人员都选中
-      if (isGroupSel==true){
-      for(var i=0;i<length;i++){
+      if (isGroupSel == true && personList){
+        for (var i = 0; i < personList.length;i++){
         personList[i].isPersonSel = true;
       }
       }else{
-        console.log("000");
-        for (var i = 0; i < length; i++) {
+        if (personList){
+        for (var i = 0; i < personList.length; i++) {
           personList[i].isPersonSel = false;
         }
+      }
       }
       //更改全选状态
       var count=0;
@@ -181,6 +163,7 @@ wx.makePhoneCall({
         var personList = groupList[i].personList;
         //定义count用于计数
         var count=0;
+        if (personList){
         for (var j = 0; j < personList.length; j++){
           if (personList[j].tel==tel){
             personList[j].isPersonSel = !personList[j].isPersonSel;``
@@ -193,9 +176,9 @@ wx.makePhoneCall({
           //那么count是0，组就全选
           if (count == 0){
             groupList[i].isGroupSel = true;
-          }
+          }       
         }
-
+        }
       }
       //更改全选状态开始
       var countAll = 0;
@@ -227,48 +210,70 @@ wx.makePhoneCall({
     })
     var data = {};
       data = {
-        'msgNums': this.data.msgNums,
-        'text': e.detail.value.textarea
+        "smsTaskVo.receiverList": this.data.msgIds,
+        // 'msgNums': this.data.msgNums,
+        "smsTaskVo.creater":this.data.username,
+        'smsTaskVo.smsDescribe': e.detail.value.textarea
       }
-      if(data.text){
-      console.log("短信发送传后台数据:" + this.data.msgNums, e.detail.value.textarea)
-//      wx.request({
-//    url: '',
-//    data: data,
-//    header: {'content-type': 'application/json'},
-//    method: 'POST',
-//    dataType: '',
-//    success:(res) => {
-//     this.setData({
-//       msgNums:[] 
-//     })
-// },
-//    fail: (res)=> {
-//     this.setData({
-//       msgNums:[] 
-//     }),
-//        wx.showToast({
-//          title: '群发信息失败，请检查网络连接',
-//          duration: 2000
-//        })
-//      return;
-// }
-//  })
+      if (data["smsTaskVo.smsDescribe"]){
+        console.log("短信发送传后台数据:", data)
+     wx.request({
+       url: weburl+'SHSFKS/wx/saveWxSmsTask.action',
+   data: data,
+   header: { "Content-Type": "application/x-www-form-urlencoded" },
+   method: 'POST',
+   dataType: '',
+   success:(res) => {
+     console.log("短信提交后台返值：", res)
+     if (res.data != null) {
+       if (res.data.dataStatus == "1") {
+         wx.showToast({
+           title: '信息发送成功',
+           duration: 2000
+         })
+       } else {
+         if (data.errorMsg != null
+           && data.errorMsg.length > 0) {
+           wx.showToast({
+             title: data.errorMsg,
+             duration: 2000
+           })
+         }
+       }
+       }
+},
+   fail: (res) => {
+       wx.showToast({
+         title: '信息发送失败，请检查网络连接',
+         duration: 2000
+       })
+     return;
+},
+    complete: () => {
+    //   this.setData({
+    //     msgNums:[],
+    //     msgIds: []  
+    // })
+      this.cancel();
+    }
+ })
       }else{
         wx.showToast({
           title: '短信内容不能为空',
           duration: 2000
         })
       }
-    this.setData({
-      msgNums:[]
-    })
+    // this.setData({
+    //   msgNums:[],
+    //   msgIds: []
+    // })
   },
   //取消
   formReset: function () {
     this.setData({
       modalHidden: !this.data.modalHidden,
-      msgNums: [] 
+      msgNums: [],
+      msgIds: []
     })
   },
   selectAll:function () {
@@ -282,10 +287,12 @@ wx.makePhoneCall({
         for (var i = 0; i < groupList.length; i++){
           var personList = groupList[i].personList;
             groupList[i].isGroupSel =true;
+            if (personList) {
            for (var j = 0; j < personList.length; j++) {
              personList[j].isPersonSel = true;
              personList[j].isPersonShow = true;
            }
+            }
         }
       }
     } else if (this.data.isSelectAll == false){
@@ -294,9 +301,11 @@ wx.makePhoneCall({
         for (var i = 0; i < groupList.length; i++) {
           var personList = groupList[i].personList;
           groupList[i].isGroupSel = false;
+          if (personList) {
           for (var j = 0; j < personList.length; j++) {
             personList[j].isPersonSel = false;
             personList[j].isPersonShow = true;
+          }
           }
         }
       }
@@ -306,17 +315,21 @@ wx.makePhoneCall({
     })
   },
   cancel:function(){
+    console.log("调用cancel方法");
     this.setData({
       isSelState: false,
       isSelectAll: false,
-      msgNums:[]
+      msgNums:[],
+      msgIds: []
     })
     if (this.data) {
       var groupList = this.data.groupList;
       for (var i = 0; i < groupList.length; i++) {
         var personList = groupList[i].personList;
+        if (personList) {
         for (var j = 0; j < personList.length; j++) {
           personList[j].isPersonShow = false;
+        }
         }
       }
     }
@@ -327,14 +340,19 @@ wx.makePhoneCall({
   //多选编辑短信
   edit:function(){
     var msgNums=this.data.msgNums;
+    var msgIds = this.data.msgIds;
     var groupList = this.data.groupList;
 for(var i=0;i<groupList.length;i++){
   var personList = groupList[i].personList;
+  if (personList) {
   for (var j = 0; j < personList.length; j++){
     if (personList[j].isPersonSel==true){
       msgNums.push(personList[j].tel)
+      msgIds.push(personList[j].linkManId)
+      
     }
-  }   
+  }  
+  } 
 }
 if (msgNums.length !== 0) {
   this.setData({

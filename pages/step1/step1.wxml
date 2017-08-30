@@ -1,8 +1,7 @@
 <!--step1.wxml-->
-<scroll-view class="view" scroll-y="true" bindscroll="scroll" style="height:{{scrollH}}px;">
 <view class="step1-container" style="padding-top:0;">
 <text wx:if="{{showTitle}}" class="usertext fixTitle" style="text-align:center">上海国家司法考试考务安全系统</text>
-<view  class="userinfo" style="position:relative;height:240px;top:0px;opacity:{{opacity}}">
+<view  class="userinfo" style="position:relative;height:290px;top:0px;">
 <view class="guohui">
 <image src="./img/guohui.png" style="float:left;width:35px;height:35px;"></image>
 <view style="float:left;padding:0 0 0 8px;height:35px;">
@@ -17,6 +16,7 @@
 </view>
 <text class="usertext" style="font-size:12px;">最后签到时间：{{lastTime}}</text>
 <text class="usertext" style="font-size:12px;">最后签到地点：{{position}}</text>
+<text class="usertext" style="font-size:12px;">天气：{{temperature}} {{weatherDesc}}</text>
 </view>
 </view>
 
@@ -30,14 +30,6 @@
 <image src="./img/zhunkao.png" class="gnimg"></image>
 <text class="gntext">准考证</text>
 </view>
-<view class="li" hover-class="gray" bindtap="toWJfPage">
-<image src="./img/weiji.png" class="gnimg"></image>
-<text class="gntext">违纪登记</text>
-</view>
-<view class="li" hover-class="gray" bindtap="toJJfPage">
-<image src="./img/shijuan.png" class="gnimg"></image>
-<text class="gntext">试卷交接</text>
-</view>
 <view class="li" hover-class="gray" bindtap="toRXqPage">
 <image src="./img/renxiang.png" class="gnimg"></image>
 <text class="gntext">人像信息</text>
@@ -45,6 +37,14 @@
 <view class="li" hover-class="gray" bindtap="toYCfPage">
 <image src="./img/yichang.png" class="gnimg"></image>
 <text class="gntext">异常上报</text>
+</view>
+<view class="li" hover-class="gray" bindtap="toWJfPage">
+<image src="./img/weiji.png" class="gnimg"></image>
+<text class="gntext">违纪上报</text>
+</view>
+<view class="li" hover-class="gray" bindtap="toJJqPage">
+<image src="./img/shijuan.png" class="gnimg"></image>
+<text class="gntext">交接查询</text>
 </view>
 <view class="li" hover-class="gray" bindtap="qiandao">
 <image src="./img/qiandao.png" class="gnimg"></image>
@@ -54,7 +54,6 @@
 <image src="./img/more.svg" class="gnimg"></image>
 <text class="gntext">更多</text>
 </view>
-
 </view>
 
 <view class="dothings" wx:for="{{timeList}}">
@@ -63,14 +62,14 @@
 <image src="./img/timepoint.svg" style="width:50rpx;height:50rpx;"></image>
 </view>
 <view class="name-wrapper">
-<text class="name">{{item.person}}</text>
-<text class="time" style="color:#808080">{{item.time}}</text>
+<text class="name">{{item.creater}}</text>
+<text class="time" style="color:#808080">{{item.acceptDate}}</text>
 </view>
 </view>
-<view class="thing">{{item.done}}</view>
+<view class="thing">{{item.message}}</view>
 <view class="button">
-<view class="thingbt" style="" data-done="{{item.done}}" bindtap="detail">查看详情</view>
-<view class="thingbt" data-tel="{{item.tel}}" bindtap="reply">回复</view>
+<view class="thingbt" data-id="{{item.id}}" data-done="{{item.message}}" data-rep="{{item.replyMsg}}" bindtap="detail">查看详情</view>
+<view class="thingbt" data-id="{{item.id}}" data-tel="{{item.tel}}" bindtap="reply">回复</view>
 </view>
 </view>
 
@@ -83,6 +82,14 @@
     </view>
     </form>
   </modal>
+ 
+   <!-- <modal title="详情" style="font-size:12px;" wx:if="{{modal2Hidden}}"confirm-text="" no-cancel>
+<view class=""></view>
+    <view class="btarea">
+        <button class="bt" type="primary">确定</button>
+    </view>
+
+  </modal> -->
 
 
 
@@ -102,4 +109,3 @@
 </view> -->
 
 </view>
-</scroll-view>

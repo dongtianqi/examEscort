@@ -1,28 +1,26 @@
 <view class="wrapper">
 <view class="ul" wx:for="{{dataList}}">
 <view class="li">
-<label class="label">姓名：</label>
-<view class="name">{{item.name}}</view>
+<label class="label">试卷运输状态：</label>
+<view wx:if="{{item.moveTypeName=='出发'}}" class="name" style="width:auto;color:#008000;font-size:14px;">{{item.moveTypeName}}</view>
+<view wx:if="{{item.moveTypeName=='送达'}}" class="name" style="width:auto;color:#FF0000;font-size:14px">{{item.moveTypeName}}</view>
 </view>
 <view class="li">
-<label class="label">性别：</label>
-<view class="name">{{item.sex}}</view>
+<label class="label">上报人：</label>
+<view class="name">{{item.linkManName}}</view>
 </view>
 <view class="li">
-<label class="label">准考证号：</label>
-<view class="name">{{item.zkz}}</view>
+<label class="label">上报时间：</label>
+<view class="name">{{item.careateDate}}</view>
 </view>
 <view class="li">
-<label class="label">出生日期：</label>
-<view class="name">{{item.date}}</view>
+<label class="label">上报地址：</label>
+<view class="name">{{item.moveAddr}}</view>
 </view>
 <view class="li">
-<label class="label">交接时间：</label>
-<view class="name">{{item.time}}</view>
+<label class="label">科目名称：</label>
+<view class="name">{{item.subjectName}}</view>
 </view>
-<view class="li">
-<label class="label">交接地点：</label>
-<view class="name">{{item.pos}}</view>
-</view>
+
 </view>
 </view>

@@ -1,49 +1,22 @@
-<!--fpage.wxml-->
-<view class="step3-container" style="padding:20rpx 0">
-<form bindsubmit="formSubmit" bindreset="formReset">
-<view class="tr">
- <label class="label">姓名：</label>
- <input name="name" class="input" placeholder=""/>
+<!--qpage.wxml-->
+<view class="classname">
+<form bindsubmit="search">
+<view class="input-wrapper">
+<label class="label">准考证:</label>
+<input name="zkz" class="input" value="{{result}}" placeholder="请输入准考证号" placeholder-class="placefont"/>
+<image class="icon" src="../img/saoma.svg" bindtap="saoma"></image>
 </view>
- <view class="tr">
-   <label class="label">性别:</label>
-  <radio-group class="radio-group" bindchange="radioChange">
-  <label class="radio" name="sex">
-    <radio class="radio" name="sex" value="男"/>男
-  </label>
-    <label class="radio" name="sex">
-    <radio class="radio" name="sex" value="女"/>女
-  </label>
-</radio-group> 
- </view>
- <view class="tr">
-  <label class="label">准考证号:</label>
- <input name="zkz" class="input" placeholder=""/>
- </view>
- <view class="tr">
- <label class="label">出生日期：</label>
-<picker name="birth" class="input" mode="date" value="{{date}}" start="1900-01-01" end="2017-06-01" bindchange="bindDateChange">
-    <view class="input" style="height:40rpx;padding:0;">
-       {{date}}
-    </view>
-  </picker>
- </view>
- <view class="tr">
-  <label class="label">身份证号:</label>
- <input name="sfz" class="input" placeholder=""/>
- </view>
- <view class="tr" hidden  style="position:relative;">
-  <label class="label">当前位置:</label>
-  <input name="location" class="input" placeholder="" 
-  value="{{location.latitude}},{{location.longitude}}"/>
- </view>
- <view name="photo" class="photo"  bindtap="choosePhoto">
- + 选择要上传的图片
- </view>
-
- <view class="btarea">
-     <button formType="submit" class="bt" type="primary">提交</button>
-    <button formType="reset" class="bt">重置</button>
- </view>
+<view class="input-wrapper">
+<label class="label">身份证:</label>
+<input name="sfz" class="input" placeholder="请输入身份证号" placeholder-class="placefont"/>
+</view>
+<view class="input-wrapper">
+<label class="label">姓名:</label>
+<input name="student" class="input" placeholder="请输入姓名" placeholder-class="placefont"/>
+</view>
+<button class="bt" type="primary" formType="submit">搜索</button>
 </form>
+<view wx:if="{{}}" class="table">
+
+</view>
 </view>

@@ -46,9 +46,13 @@
 <view class="func-part" >
 <view class="func-title">试卷交接管理</view>
 <view class="ul clearfix">
-<view class="li" hover-class="gray" bindtap="toJJfPage">
+<view class="li" hover-class="gray" bindtap="toSJCFfPage">
 <image class="icon" src="./img/jjgl.png"></image>
-<text class="func-name">交接登记</text>
+<text class="func-name">试卷出发登记</text>
+</view>
+<view class="li" hover-class="gray" bindtap="toSJDDfPage">
+<image class="icon" src="./img/jjgl.png"></image>
+<text class="func-name">试卷到达登记</text>
 </view>
 <view class="li" hover-class="gray" bindtap="toJJqPage">
 <image class="icon" src="./img/jjcx.png"></image>

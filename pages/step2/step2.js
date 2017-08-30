@@ -47,9 +47,14 @@ Page({
     })
   },
   //三
-  toJJfPage: function () {
+  toSJCFfPage: function () {
     wx.navigateTo({
-      url: '../JJfPage/JJfPage'
+      url: '../SJCFfPage/SJCFfPage'
+    })
+  },
+  toSJDDfPage: function () {
+    wx.navigateTo({
+      url: '../SJDDfPage/SJDDfPage'
     })
   },
   toJJqPage: function () {

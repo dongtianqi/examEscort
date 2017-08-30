@@ -9,7 +9,11 @@ padding:200rpx 0;
 box-sizing:border-box;
 font-size:14px;
 }
-
+.picker{
+  height: 80rpx;
+padding:10rpx 20rpx;
+box-sizing: border-box;
+}
 .input{
   flex:5;
 background: #f3f3f4;
@@ -17,6 +21,7 @@ border-radius:20rpx;
 height: 80rpx;
 padding:10rpx 20rpx;
 box-sizing: border-box;
+width: 72%;
 }
 .photo {
   font-size: 12px;
@@ -52,10 +57,14 @@ width:85%;
 margin: 20rpx 0;
 font-size: 14px;
 } 
-/* 图片 */
-/* .page-section{
-  display: block;
-  float: right;
+.textarea {
+  padding: 20rpx;
+ width: 72%;
+ background: #f3f3f4;
+ border-radius:20rpx;
+ box-sizing: border-box;
+}
+.time,.addr {
+  text-align: left;
   width: 70%;
-  padding:20rpx;
-} */
+}

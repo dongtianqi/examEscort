@@ -9,8 +9,8 @@ page{
   color:transparent;
 }
 .userinfo{
-  background: url('http://sinotn.imwork.net/fileServer/images/123.png');
-  background-position: 50% 50%;
+ background: url('http://sinotn.imwork.net/SHSFKS/wxPhoto/system/userinfobg.png'); 
+  /* background-position: 50% 60%; */
   background-size: cover;
   width:100%;
 text-align: left;
@@ -22,7 +22,7 @@ padding-top: 10px;
   z-index: 10;
 }
 .usertext_wrapper{
-  margin-top: 105px;
+  margin-top: 125px;
 
 }
 .usertitle{
@@ -35,7 +35,7 @@ padding-top: 10px;
   height: 80px;
 }
 .usertext{
-  padding: 5px 5px 5px 20px;
+  padding: 3px 3px 3px 20px;
   /* float: left; */
   width: 100%;
   display: block;

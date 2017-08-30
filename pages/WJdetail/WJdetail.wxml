@@ -1,19 +1,60 @@
-<!--fpage.wxml-->
-<view class="step3-container" style="padding:20rpx 0">
-<form bindsubmit="formSubmit" bindreset="formReset">
+<!--BMlist.wxml-->
+<view class="wapper">
+<view class="list clearfix">
+
+<image class="photo" src=""></image>
+
 <view class="tr">
- <label class="label">异常名称：</label>
- <input name="examExceptionVo.exceptionName" class="input" placeholder=""/>
+<label class="label">准考证：</label>
+<view class="name">{{dataList.licence}}</view>
 </view>
+<view class="tr">
+<label class="label">姓名：</label>
+<view class="name">{{dataList.examineeName}}</view>
+</view>
+<view class="tr">
+<label class="label">性别：</label>
+<view class="name">{{dataList.sex}}</view>
+</view>
+<view class="tr">
+<label class="label">身份证号：</label>
+<view class="name">{{dataList.identity}}</view>
+</view>
+<view class="tr">
+<label class="label">出生日期：</label>
+<view class="name">{{dataList.birthday}}</view>
+</view>
+<form bindsubmit="formSubmit" bindreset="formReset">
  <view class="tr">
-   <label class="label">异常描述:</label>
- <input name="examExceptionVo.exceptionDescript" class="input" placeholder=""/>
- </view>
+  <label class="label">考试科目:</label>
+  <picker class="" bindchange="bindPickerChange0" value="{{index0}}" range="{{array0}}">
+    <view name="examineePunishVo.subject" class="picker">
+      {{array0[index0]}}
+    </view>
+  </picker>
+  </view>
  <view class="tr">
-  <label class="label">考点名称:</label>
- <input name="examExceptionVo.examPlaceName" class="input" placeholder=""/>
- </view>
-<!-- 照片 -->
+  <label class="label">违纪行为:</label>
+  <picker class="" bindchange="bindPickerChange1" value="{{index1}}" range="{{array1}}">
+    <view name="examineePunishVo.punishActionName" class="picker">
+      {{array1[index1]}}
+    </view>
+  </picker>
+  </view>
+   <view class="tr">
+  <label class="label">处理办法:</label>
+  <picker class="" bindchange="bindPickerChange2" value="{{index2}}" range="{{array2}}">
+    <view name="examineePunishVo.punishName" class="picker">
+      {{array2[index2]}}
+    </view>
+  </picker>
+  </view>
+  <!-- <view class="tr">
+  <label class="label">处理办法:</label>
+ <input name="examineePunishVo.remarks" class="input" placeholder=""/>
+ </view> -->
+
+ <!-- 照片 -->
 
 
   <view class="page-body">
@@ -75,14 +116,11 @@
       </view>
   </view>
 
-
- <!-- <view name="photo" class="photo"  bindtap="choosePhoto">
- + 选择要上传的图片
- </view> -->
-
- <view class="btarea">
+  <view class="btarea">
      <button formType="submit" class="bt" type="primary">提交</button>
     <button formType="reset" class="bt">重置</button>
  </view>
-</form>
+ </form>
+ 
+</view>
 </view>

@@ -12,10 +12,13 @@ page{
   color: #707070;
   margin-top: 8px;
   background: #FFF;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .label,.name{
   display: inline-block;
-  padding: 20rpx;
+  padding: 14rpx;
+}
+.label{
+  width:80px;
 }

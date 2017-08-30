@@ -1,13 +1,13 @@
 <!--login.wxml-->
 <view class="container">
-<form bindsubmit="toStep1" style="width:100%">
+<form bindsubmit="toStep1" style="width:100%" report-submit="true">
 <view class="wrapper">
 <image class="img" src="./img/username.png"></image>
-<input name="name" class="input" type="text" placeholder="请输入用户名"/>
+<input name="linkManVo.phone" class="input" type="text" placeholder="请输入用户名"/>
 </view>
 <view class="wrapper">
 <image class="img" src="./img/password.png"></image>
-<input name="password" class="input" type="text" password="false" placeholder="请输入密码"/>
+<input name="linkManVo.password" class="input" type="text" password="false" placeholder="请输入密码"/>
 </view>
 
 <button formType="submit" style="width:75%;height:100rpx;margin-top:50rpx;color:#FFF;background:#008bec">登录</button>

@@ -1,71 +1,54 @@
 // BMdetail.js
+var app = getApp();
+var weburl = app.globalData.weburl;
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    dataList: {
-      "name": "白晨星",
-      "sex": "男",
-      "date": "2000年8月",
-      "djwz": "汉字",
-      "num": "312423",
-      "zkz": "314234213",
-      "city": "南开大学附属中学",
-      "pos": "天津南开区109号",
-      "kch": "12",
-      "zw": "1号",
-      "rxinfo":[
-        {
-          "photo":"",
-        "sj" : "试卷一",
-        "sbjg":"识别通过",
-        "ajsj":"2017-09-31"
-        },
-        {
-          "photo":"",
-          "sj": "试卷二",
-          "sbjg": "识别通过",
-          "ajsj": "2017-09-31"
-        },
-        {
-          "photo": "",
-          "sj": "试卷三",
-          "sbjg": "识别通过",
-          "ajsj": "2017-09-31"
-        },
-        {
-          "photo": "",
-          "sj": "试卷四",
-          "sbjg": "识别通过",
-          "ajsj": "2017-09-31"
-        }
-
-      ]
-    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var index = options.index;
+    var zkz = options.zkz;
+    console.log(zkz)
     var data = {
-      index: index
+      'licence': zkz
     }
+    console.log("详情前端传值：", data)
     wx.request({
-      url: 'test.php', //仅为示例，并非真实的接口地址
+      url: weburl + 'SHSFKS/wx/findResultExamineeListByAjax.action', //仅为示例，并非真实的接口地址
       data: data,
       method: "POST",
       header: {
-        'content-type': 'application/json'
+        "content-type": 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
-        console.log(res.data)
-        this.setData({
-          dataList: res.data
-        });
-
+      success: (res) => {
+        if (res.data != null) {
+          var dataMain = res.data.dataMain;
+          console.log(res)
+          if (res.data.dataStatus == "1") {
+            this.setData({
+              dataList: res.data.dataMain
+            });
+          }
+          if (dataMain.length == 0){
+            wx.showToast({
+              title: "查询结果为空",
+              duration: 2000
+            })
+          }
+          else {
+            if (res.data.errorMsg != null
+              && res.data.errorMsg.length > 0) {
+              wx.showToast({
+                title: res.data.errorMsg,
+                duration: 2000
+              })
+            }
+          }
+        }
       }
     })
   }

@@ -1,58 +1,59 @@
 
-.step3-container{
-height:100%;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:space-between;
-padding:200rpx 0;
-box-sizing:border-box;
-font-size:14px;
+.icon-search{
+width:44rpx;
+height:36rpx;
+position:absolute;
+z-index: 10;
+top:34rpx;
+left:180rpx;
 }
-
-.input{
-background: #f3f3f4;
-height: 80rpx;
-padding:10rpx 20rpx;
-box-sizing: border-box;
-margin-top: 20rpx;
+.input-wrapper{
+  position: relative;
+padding: 25rpx;
+/*水平居中*/
+justify-content: center;
+/*垂直居中*/
+align-items: center;
 }
-radio-group{
-  margin-top: 20rpx;
-}
-.radio{
-  font-size: 12px;
-  color:#707070;
-}
-.photo {
-  font-size: 12px;
-  line-height: 80rpx;
-  background: #f3f3f4;
-border-radius:20rpx;
-height: 80rpx;
-box-sizing: border-box;
-text-align: center;
-width:50%;
-margin-left: 170rpx;
-margin-top: 30rpx;
-color: #707070;
+.icon{
+width:60rpx;
+height:70rpx;
+padding:0 20rpx;
+position: absolute;
+right: 40rpx;
+z-index: 10;
+top: 85rpx;
 }
 .label{
-  font-size: 12px;
+  color: #ccc;
+  font-size:12px;
 display: block;
+}
+.placefont{
+  font-size: 12px;
 color: #707070;
 }
-.tr{
-  margin-top:20rpx;
+.input{
+  /* flex: 3;
+  position:relative;
+  display:inline-block; 
+  border-radius:70rpx; */
+  background:#f3f3f4;
+  height:50rpx;
+  padding:20rpx;
+  margin-top: 20rpx;
+  color: #707070;
 }
-form {
-width:85%;
-}
- .btarea{
-margin-top: 30rpx;
-
+.search{
+  display:inline-block;
+  padding:22rpx 30rpx 0 0;
+  width:75rpx;
+  font-size:14px;
+  color: #333333;
 }
 .bt{
-margin: 20rpx 0;
-font-size: 14px;
-} 
+  margin-top:15rpx;
+  width: 75%;
+  font-size:14px;
+  height: 35px;
+}

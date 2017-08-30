@@ -2,27 +2,40 @@
 <view class="ul" wx:for="{{dataList}}">
 <view class="li">
 <label class="label">姓名：</label>
-<view class="name">{{item.name}}</view>
+<view class="name">{{item.examineeVo.examineeName}}</view>
 </view>
 <view class="li">
 <label class="label">性别：</label>
-<view class="name">{{item.sex}}</view>
+<view class="name">{{item.examineeVo.sex}}</view>
 </view>
 <view class="li">
 <label class="label">准考证号：</label>
-<view class="name">{{item.zkz}}</view>
+<view class="name">{{item.examineeVo.identity}}</view>
+</view>
+ <view class="li">
+<label class="label">考试科目：</label>
+<view class="name">{{item.subject}}</view>
+</view> 
+<view class="li">
+<label class="label">违纪行为：</label>
+<view class="name">{{item.punishActionName}}</view>
 </view>
 <view class="li">
-<label class="label">出生日期：</label>
-<view class="name">{{item.date}}</view>
+<label class="label">处理方法：</label>
+<view class="name">{{item.punishName}}</view>
+</view>
+
+<view class="li">
+<label class="label">上报人：</label>
+<view class="name">{{item.alterUserName}}</view>
 </view>
 <view class="li">
 <label class="label">上报时间：</label>
-<view class="name">{{item.time}}</view>
+<view class="name">{{item.createDate}}</view>
 </view>
 <view class="li">
 <label class="label">上报地点：</label>
-<view class="name">{{item.pos}}</view>
+<view class="name">{{item.loginAddr}}</view>
 </view>
 </view>
 </view>

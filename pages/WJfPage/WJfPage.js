@@ -1,4 +1,4 @@
-// fpage.js
+// qpage.js
 Page({
   /**
    * 页面的初始数据
@@ -9,67 +9,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getLocation({
-      type: 'wgs84',
+    // var index = options.index;
+    // this.setData({
+    //   index: index
+    // });
+  },
+  saoma: function () {
+    wx.scanCode({
       success: (res) => {
+        console.log("saomaneirong" + res.result)
         this.setData({
-          location: res
+          result: res.result
         })
       }
     })
-
   },
-  formSubmit: function (e) {
-    console.log("表单提交后台数据" + e.detail.value, this.data.sex, this.data.photo,this.data.date);
+  search: function (e) {
+    //请求数据
     var data = e.detail.value;
-    data.sex=this.data.sex;
-    data.photo=this.data.photo;
-    data.date=this.data.date
-    // wx.request({
-    //   url: 'test.php', //仅为示例，并非真实的接口地址
-    //   data: data,
-    //   header: {
-    //     'content-type': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data)
-    // //返回上一个页面
-    //wx.navigateBack();
-    //   }
-    // })
-  },
-  formReset: function () {
-    this.setData({
-      date: '',
-      photo: '',
-      sex:''
-    })
-    console.log('form发生了reset事件')
-  },
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value
-    })
-  },
-  choosePhoto: function () {
-    wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: (res) => {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths
-        this.setData({
-          photo: tempFilePaths
-        })
-      }
-    })
-  },
-  radioChange: function (e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
-    this.setData({
-      sex: e.detail.value
-    })
+    var zkz = data.zkz.trim();
+    var sfz = data.sfz.trim();
+    var student = data.student.trim();
+    if (zkz ||sfz || student){
+      wx.redirectTo({
+        url: '../WJlist/WJlist?zkz=' + zkz + '&sfz=' + sfz + '&student=' +student
+      })
+    } else {
+      wx.showToast({
+        title: '查询信息不能为空',
+        duration: 2000
+      })
+    }
   }
 
 })
