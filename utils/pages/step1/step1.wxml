@@ -1,0 +1,115 @@
+<!--step1.wxml-->
+<view class="step1-container" style="padding-top:0;">
+<text wx:if="{{showTitle}}" class="usertext fixTitle" style="text-align:center">上海国家司法考试考务安全系统</text>
+<view  class="userinfo" style="position:relative;height:300px;top:0px;">
+<view class="guohui">
+<image src="./img/guohui.png" style="float:left;width:35px;height:35px;"></image>
+<view style="float:left;padding:0 0 0 8px;height:35px;">
+<view style="font-size:16px;font-weight:700;line-height:20px">上海司法行政</view>
+<view style="font-size:12px;line-height:15px;">国家司法考试管理系统</view>
+</view>
+</view>
+<view class="usertext_wrapper">
+<view class="usertext">
+<text class="" style="font-size:16px;color:#90f6ff;text-shadow:none;">{{username}}</text>
+<text class="" style="font-size:10px;text-shadow:none;">（{{role}}）</text>
+</view>
+
+<text class="usertext" style="font-size:12px;">所在考点: {{placename}}</text>
+<text class="usertext" style="font-size:12px;">最后签到时间：{{lastTime}}</text>
+<text class="usertext" style="font-size:12px;">最后签到地点：{{position}}</text>
+<text class="usertext" style="font-size:12px;">天气：{{temperature}} {{weatherDesc}}</text>
+</view>
+</view>
+
+
+<view class="gongneng clearfix">
+
+<view class="li" hover-class="gray" bindtap="toZKZqPage">
+<image src="./img/zhunkao.png" class="gnimg"></image>
+<text class="gntext">准考证</text>
+</view>
+<view class="li" hover-class="gray" bindtap="toRXqPage">
+<image src="./img/renxiang.png" class="gnimg"></image>
+<text class="gntext">人像信息</text>
+</view>
+<view class="li" hover-class="gray" bindtap="toYCfPage">
+<image src="./img/yichang.png" class="gnimg"></image>
+<text class="gntext">信息上报</text>
+</view>
+<view class="li" hover-class="gray" bindtap="toYCqPage">
+<image src="./img/weiji.png" class="gnimg"></image>
+<text class="gntext">上报查询</text>
+</view>
+<view class="li" hover-class="gray" bindtap="toQKfPage">
+<image src="./img/baoming.png" class="gnimg" ></image>
+<text class="gntext">缺考上报</text>
+</view>
+<view class="li" hover-class="gray" bindtap="toQKqPage">
+<image src="./img/shijuan.png" class="gnimg"></image>
+<text class="gntext">缺考查询</text>
+</view>
+<view class="li" hover-class="gray" bindtap="qiandao">
+<image src="./img/qiandao.png" class="gnimg"></image>
+<text class="gntext">签到</text>
+</view>
+
+<view class="li" hover-class="gray" bindtap="toMore">
+<image src="./img/more.svg" class="gnimg"></image>
+<text class="gntext">更多</text>
+</view>
+</view>
+
+<view class="dothings" wx:for="{{timeList}}">
+<view class="thinghead clearfix">
+<view class="img">
+<image src="./img/timepoint.svg" style="width:50rpx;height:50rpx;"></image>
+</view>
+<view class="name-wrapper">
+<text class="name">{{item.creater}}</text>
+<text class="time" style="color:#808080">{{item.acceptDate}}</text>
+</view>
+</view>
+<view class="thing">{{item.message}}</view>
+<view class="button">
+<view class="thingbt" data-id="{{item.id}}" data-done="{{item.message}}" data-rep="{{item.replyMsg}}" bindtap="detail">查看详情</view>
+<view class="thingbt" data-id="{{item.id}}" data-tel="{{item.tel}}" bindtap="reply">回复</view>
+</view>
+</view>
+
+  <modal title="信息" style="font-size:12px;" wx:if="{{modalHidden}}"confirm-text="" no-cancel>
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <textarea name="textarea" style="border:1rpx solid #d3d3d3; width:95%;margin:auto;"/>
+    <view class="btarea">
+        <button class="bt" type="primary" formType="submit">确定</button>
+    <button class="bt" formType="reset">取消</button>
+    </view>
+    </form>
+  </modal>
+ 
+   <!-- <modal title="详情" style="font-size:12px;" wx:if="{{modal2Hidden}}"confirm-text="" no-cancel>
+<view class=""></view>
+    <view class="btarea">
+        <button class="bt" type="primary">确定</button>
+    </view>
+
+  </modal> -->
+
+
+
+<!-- <view class="menu">
+<view class="menu-bt" bindtap="toStep1" hover-class="hover">
+<image class="menuImg" src="./img/shouyehover.svg"></image>
+<view style="color:#1092ed;">首页</view>
+</view>
+<view class="menu-bt" bindtap="toStep2">
+<image class="menuImg" src="./img/guanli.svg"></image>
+<view style="color:#000;">司考管理</view>
+</view>
+<view class="menu-bt" bindtap="toStep3">
+<image  class="menuImg" src="./img/lianxiren.svg"></image>
+<view style="color:#000;">联系人</view>
+</view>
+</view> -->
+
+</view>

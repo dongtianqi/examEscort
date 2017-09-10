@@ -1,0 +1,22 @@
+<!--qpage.wxml-->
+<view class="classname">
+<form bindsubmit="search">
+<view class="input-wrapper">
+<label class="label">准考证:</label>
+<input name="zkz" class="input" value="{{result}}" placeholder="请输入准考证号" placeholder-class="placefont"/>
+<image class="icon" src="../img/saoma.svg" bindtap="saoma"></image>
+</view>
+<view class="input-wrapper">
+<label class="label">身份证:</label>
+<input name="sfz" class="input" placeholder="请输入身份证号" placeholder-class="placefont"/>
+</view>
+<view class="input-wrapper">
+<label class="label">姓名:</label>
+<input name="student" class="input" placeholder="请输入姓名" placeholder-class="placefont"/>
+</view>
+<button class="bt" type="primary" formType="submit">搜索</button>
+</form>
+<view wx:if="{{}}" class="table">
+
+</view>
+</view>

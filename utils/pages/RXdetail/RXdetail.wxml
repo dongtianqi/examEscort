@@ -1,0 +1,48 @@
+<!--BMdetail.wxml-->
+<view class="wapper">
+<view class="list clearfix">
+<image class="photo" src=""></image>
+ <view class="tr" style="border-top: 1px dashed #ccc;">
+<label class="label">姓名：</label>
+<view class="name">{{dataList[0].examineeName}}</view>
+</view>
+
+<view class="tr">
+<label class="label">准考证号：</label>
+<view class="name">{{dataList[0].licence}}</view>
+</view>
+<view class="tr">
+<label class="label">考点名称：</label>
+<view class="name">{{dataList[0].examPlaceName}}</view>
+</view>
+<view class="tr">
+<label class="label">考场号：</label>
+<view class="name">{{dataList[0].examPlace}}</view>
+</view>
+<view class="tr">
+<label class="label">座位号：</label>
+<view class="name">{{dataList[0].seatNumber}}</view>
+</view> 
+
+
+</view>
+<view class="list clearfix" wx:for="{{dataList}}">
+<image class="photo1" src="{{item.relativePath}}" style="float:left"></image>
+<view class="info-wapper">
+<view class="tr">
+<view class="name">{{item.subject}}</view>
+</view>
+<view class="tr">
+<label class="label">识别结果：</label>
+<view wx:if="{{item.isProcess}}" class="name">通过</view>
+<view wx:else class="name">未通过</view>
+</view>
+ <view class="tr">
+<label class="label">安检时间：</label>
+<view class="name">{{item.verifyDate}}</view>
+</view>
+</view>
+</view>
+
+
+</view>

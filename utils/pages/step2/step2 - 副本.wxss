@@ -1,0 +1,36 @@
+/* step2.wxss */
+
+.wrapper, .wrapper-right {
+  flex: 1;
+  border: 1px solid gray;
+  width: 50%;
+  height: 310rpx;
+  padding: 30rpx 10rpx;
+}
+
+.wrapper-right {
+  border-left: none;
+}
+
+.step1-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.bt {
+  margin-top: 60rpx;
+  width: 50%;
+  display: inline-block;
+}
+
+.wrapper-bottom {
+  border-top: none;
+}
+
+.step2-container {
+  font-size: 50rpx;
+}
+

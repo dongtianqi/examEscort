@@ -1,0 +1,41 @@
+<!--step2.wxml-->
+<view class="step2-container" style="padding:0;">
+<view class="step1-container">
+<view class="wrapper" bindtap="toQpage" data-index="1">
+<view class="center">报名信息</view>
+<view class="center">查询</view>
+</view>
+<view class="wrapper-right" bindtap="toQpage" data-index="2">
+<view class="center">准考证</view>
+<view class="center">查询</view>
+</view>
+</view>
+
+<view class="step1-container">
+<view class="wrapper wrapper-bottom" bindtap="toQpage" data-index="3">
+<view class="center">违纪登记</view>
+<view class="center">查询</view>
+</view>
+<view class="wrapper-bottom wrapper-right" bindtap="toFpage" data-index="4">
+<view class="center">试卷交接</view>
+<view class="center">查询</view>
+</view>
+</view>
+
+<view class="step1-container">
+<view class="wrapper wrapper-bottom" bindtap="toFpage" data-index="5">
+<view class="center">人像信息</view>
+<view class="center">查询</view>
+</view>
+<view class="wrapper-right wrapper-bottom" bindtap="toFpage" data-index="6">
+<view class="center">异常上报</view>
+<view class="center">查询</view>
+</view>
+
+</view>
+
+
+
+
+</view>
+

@@ -1,0 +1,21 @@
+/* login.wxss */
+
+.input {
+  padding:30rpx;
+  border:1px solid #d7d7d7;
+  width: 80%;
+  display: inline-block;
+}
+.wrapper{
+  position:relative;
+  text-align: center;
+  padding:20rpx 0;
+  width:100%;
+}
+.img{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  left: 60rpx;
+  top:40rpx;
+}

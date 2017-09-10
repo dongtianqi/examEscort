@@ -1,0 +1,79 @@
+<!--BMlist.wxml-->
+<view class="wapper">
+<view class="list clearfix">
+
+<image class="photo" src="{{dataList.photoPath}}"></image>
+
+<view class="tr" style=" border-top: 1px dashed #ccc;">
+<label class="label">网报号：</label>
+<view class="name">{{dataList.examineeId}}</view>
+</view>
+<view class="tr">
+<label class="label">报名地：</label>
+<view class="name">{{dataList.EXAM_REGISTER_NAME}}</view>
+</view>
+<view class="tr">
+<label class="label">姓名：</label>
+<view class="name">{{dataList.examineeName}}</view>
+</view>
+<view class="tr">
+<label class="label">性别：</label>
+<view class="name">{{dataList.sex}}</view>
+</view>
+<view class="tr">
+<label class="label">证件类别：</label>
+<view class="name">{{dataList.IDENTITY_TYPE}}</view>
+</view>
+<view class="tr">
+<label class="label">身份证号：</label>
+<view class="name">{{dataList.identity}}</view>
+</view>
+<view class="tr">
+<label class="label">出生日期：</label>
+<view class="name">{{dataList.birthday}}</view>
+</view>
+<view class="tr">
+<label class="label">民族：</label>
+<view class="name">{{dataList.NATIONALITY}}</view>
+</view>
+<view class="tr">
+<label class="label">户籍所在地：</label>
+<view class="name">{{dataList.REGISTER_CITY}}</view>
+</view>
+<view class="tr">
+<label class="label">学历：</label>
+<view class="name">{{dataList.LEARING}}</view>
+</view>
+<view class="tr">
+<label class="label">党派：</label>
+<view class="name">{{dataList.party}}</view>
+</view>
+<view class="tr">
+<label class="label">专业名称：</label>
+<view class="name">{{dataList.zy}}</view>
+</view>
+<view class="tr">
+<label class="label">毕业院校：</label>
+<view class="name">{{dataList.COLLEGE_NAME}}</view>
+</view>
+<view class="tr">
+<label class="label">毕业时间：</label>
+<view class="name">{{dataList.bysj}}</view>
+</view>
+<view class="tr">
+<label class="label">从业状况：</label>
+<view class="name">{{dataList.PRACTITION}}</view>
+</view>
+<view class="tr">
+<label class="label">工作单位：</label>
+<view class="name">{{dataList.gzdw}}</view>
+</view>
+<view class="tr">
+<label class="label">通讯地址：</label>
+<view class="name">{{dataList.txdz}}</view>
+</view>
+
+</view>
+
+
+</view>

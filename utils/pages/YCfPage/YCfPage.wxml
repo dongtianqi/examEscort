@@ -1,0 +1,98 @@
+<!--fpage.wxml-->
+<view class="step3-container" style="padding:20rpx 0">
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <!-- <view class="tr" hidden="true">
+  <label class="label">考点id:</label>
+ <input  style="flex:5" value="{{placeid}}"/>
+ </view> -->
+ <view class="tr">
+  <label class="label">考点名称:</label>
+ <view  style="flex:5">{{placename}}</view>
+ </view>
+<view class="tr">
+ <label class="label">上报类型：</label>
+   <picker class="input" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      {{array[index]}}
+    </view>
+  </picker>
+ <!-- <input name="examExceptionVo.exceptionName" class="input" placeholder=""/> -->
+</view>
+ <view class="tr">
+   <label class="label">情况描述:</label>
+ <input name="examExceptionVo.exceptionDescript" class="input" placeholder=""/>
+ </view>
+
+<!-- 照片 -->
+
+
+  <view class="page-body">
+  <view class="tr">
+  <label class="label">上传图片:</label>
+  </view>
+  <view class="clearfix">
+      <view class="page-section">
+        <!-- <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">图片来源</view>
+            </view>
+            <view class="weui-cell__bd">
+            
+                <view class="weui-input">拍照或相册</view>
+         
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">图片质量</view>
+            </view>
+            <view class="weui-cell__bd">
+            
+                <view class="weui-input">压缩或原图</view>
+
+            </view>
+          </view>
+        </view> -->
+
+        <view class="weui-cells">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <view class="weui-uploader">
+                <!-- <view class="weui-uploader__hd">
+                  <view class="weui-uploader__title">点击可预览选好的图片</view>
+                  <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+                </view> -->
+                <view class="weui-uploader__bd">
+                  <view class="weui-uploader__files">
+                    <block wx:for="{{imageList}}" wx:for-item="image">
+                      <view class="weui-uploader__file">
+                        <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                      </view>
+                    </block>
+                  </view>
+                  <view class="weui-uploader__input-box">
+                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        </view>
+
+      </view>
+  </view>
+
+
+ <!-- <view name="photo" class="photo"  bindtap="choosePhoto">
+ + 选择要上传的图片
+ </view> -->
+
+ <view class="btarea">
+     <button formType="submit" class="bt" type="primary">提交</button>
+    <button formType="reset" class="bt">重置</button>
+ </view>
+</form>
+</view>

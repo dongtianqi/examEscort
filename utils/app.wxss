@@ -1,0 +1,28 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+.step1-container,.step2-container,.step3-container{
+  font-family: "微软雅黑";
+}
+.center{
+  text-align: center;
+}
+.clearfix::after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  zoom: 1;
+}
+

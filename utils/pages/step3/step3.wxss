@@ -1,0 +1,102 @@
+/* step3.wxss */
+.step3-container{
+  padding:50rpx 40rpx;
+  position: flex;
+  font-size: 13px;
+  font-family: '微软雅黑';
+}
+.group {
+  position:relative;
+  padding:30rpx 0 40rpx; 
+  border-top: 1px solid #ccc;
+  flex: 1;
+}
+.person{
+  display: flex;
+  padding:20rpx 0 0 0 ;
+  align-items: center;
+}
+.fam-name{
+  display: flex;
+/*水平居中*/
+/*justify-content: center;*/
+/*垂直居中*/
+align-items: center;
+  font-size: 16px;
+ padding-left:41rpx;
+  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNDk4NzAwOTcyMDUwIiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE5NjgiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PC9zdHlsZT48L2RlZnM+PHBhdGggZD0iTTUxMiAwQzIyOS4yMjc1MiAwIDAgMjI5LjIyNzUyIDAgNTEyczIyOS4yMjc1MiA1MTIgNTEyIDUxMiA1MTItMjI5LjIyNzUyIDUxMi01MTJTNzk0Ljc3MjQ4IDAgNTEyIDB6TTUxMiA5ODMuMDRjLTI2MC4xNDcyIDAtNDcxLjA0LTIxMC44ODc2OC00NzEuMDQtNDcxLjA0UzI1MS44NTI4IDQwLjk2IDUxMiA0MC45NmMyNjAuMTUyMzIgMCA0NzEuMDQgMjEwLjg4NzY4IDQ3MS4wNCA0NzEuMDRTNzcyLjE1MjMyIDk4My4wNCA1MTIgOTgzLjA0eiIgcC1pZD0iMTk2OSIgZmlsbD0iI2JmYmZiZiI+PC9wYXRoPjwvc3ZnPg==") no-repeat;
+background-size:70rpx 70rpx;
+height:80rpx;
+  flex: 1;
+  background-position:25rpx 8rpx; 
+  color: #808080;
+}
+.name{
+    display: flex;
+/*水平居中*/
+/*justify-content: center;*/
+/*垂直居中*/
+align-items: center;
+  flex:2;
+}
+.selectAll,.gro-name{
+  padding: 8rpx;
+  margin-left: 22rpx;
+  vertical-align: middle;
+}
+/*.gro-name{
+
+  background: white;
+  position: relative;
+  top: -33rpx;
+  left: 0rpx;
+}*/
+.tel,.msg {
+padding: 15rpx 0;
+flex:1;
+width:40rpx;
+height:40rpx;
+}
+.btarea{
+margin-top: 20rpx;
+}
+.bt{
+  width: 96%;
+height: 30px;
+font-size: 14px;
+margin-top: 20rpx;
+line-height: 30px;
+}
+.icon{
+  vertical-align: middle;
+  display: inline-block;
+  }
+.all-wapper{
+  height: 40rpx;
+    padding:20rpx 0 30rpx 0;
+  }
+.groupName{
+  height: 40rpx;
+  padding:20rpx 0 10rpx 0;
+}
+  .cancel{
+    text-align: center;
+    padding: 10rpx;
+    color: white;
+    display: inline-block;
+    float: right;
+    margin-right: 14rpx;
+    width: 70rpx;
+    height: 34rpx;
+    background: #3CB371;
+    border-radius: 10rpx;
+  }
+  .allMsg{
+    width:40rpx;
+height:40rpx; 
+    float:right;
+    margin-right: 38rpx;
+  }
+.bthover {
+  background: 	#A9A9A9;
+}

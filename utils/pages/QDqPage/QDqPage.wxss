@@ -1,0 +1,27 @@
+/* QDqPage.wxss */
+page{
+  height: 100%;
+  background:#f3f3f4;
+  
+}
+.wrapper{
+  min-height: 100%;
+}
+.ul{
+  padding: 20rpx;
+  color: #707070;
+  margin-top: 8px;
+  background: #FFF;
+  font-size: 12px;
+}
+
+.label,.name{
+  display: inline-block;
+  padding: 14rpx;
+}
+.name{
+  font-weight: bold;
+}
+.label{
+  width:100px;
+}

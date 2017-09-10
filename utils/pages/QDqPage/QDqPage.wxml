@@ -1,0 +1,17 @@
+<view class="wrapper">
+<view class="ul" wx:for="{{dataList}}">
+<view class="li">
+<label class="label">姓名：</label>
+<view class="name">{{item.linkManVo.name}}</view>
+</view>
+<view class="li">
+<label class="label">最后签到时间：</label>
+<view class="name">{{item.loginDate}}</view>
+</view>
+<view class="li">
+<label class="label">最后签到地点：</label>
+<view class="name">{{item.loginAddr}}</view>
+</view>
+
+</view>
+</view>

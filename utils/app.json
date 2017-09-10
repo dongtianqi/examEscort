@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/step1/step1",
+    "pages/step2/step2",
+    "pages/qpage/qpage",
+    "pages/fpage/fpage",
+    "pages/step3/step3",
+    "pages/BMqPage/BMqPage",
+    "pages/BMlist/BMlist",
+    "pages/BMdetail/BMdetail",
+    "pages/login/login",
+    "pages/ZKZqPage/ZKZqPage",
+    "pages/WJfPage/WJfPage",
+    "pages/RXqPage/RXqPage",
+    "pages/YCfPage/YCfPage",
+    "pages/QDqPage/QDqPage",
+    "pages/QKqPage/QKqPage",
+    "pages/WJqPage/WJqPage",
+    "pages/YCqPage/YCqPage",
+    "pages/ZKZlist/ZKZlist",
+    "pages/ZKZdetail/ZKZdetail",
+    "pages/RXlist/RXlist",
+    "pages/RXdetail/RXdetail",
+    "pages/WJlist/WJlist",
+    "pages/WJdetail/WJdetail",
+    "pages/QKfPage/QKfPage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "上海司法考试",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": "true"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/step1/step1",
+        "iconPath": "pages/step1/img/shouye.png",
+        "selectedIconPath": "pages/step1/img/shouyehover.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/step2/step2",
+        "iconPath": "pages/step1/img/guanli.png",
+        "selectedIconPath": "pages/step1/img/guanlihover.png",
+        "text": "司考管理"
+      },
+      {
+        "pagePath": "pages/step3/step3",
+        "iconPath": "pages/step1/img/lianxiren.png",
+        "selectedIconPath": "pages/step1/img/lianxirenhover.png",
+        "text": "联系人"
+      }
+    ]
+  }
+}

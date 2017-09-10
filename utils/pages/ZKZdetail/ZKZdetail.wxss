@@ -1,0 +1,51 @@
+/* BMdetail.wxss */
+/* BMlist.wxss */
+page{
+  height:100%;
+}
+.wapper{
+  font-size: 15px;
+  color: #707070;
+  background: #f3f3f4;
+ min-height:100%;
+ font-family: "微软雅黑";
+ width:97%;
+}
+.list{
+  padding: 5px;
+  background: #FFF;
+    width: 100%;
+}
+.photo{
+  box-sizing: border-box;
+margin: auto;
+  width: 152px;
+  height: 227px;
+  display: block;
+  margin-bottom: 8px;
+  /* border: 1px solid red; */
+}
+.name{
+  display: inline-block;
+  font-weight: bold;
+}
+.info-wapper{
+  width: calc(100% - 100px);
+height: 110px;
+float:left;
+box-sizing: border-box;
+}
+.tr{
+border-bottom: 1px dashed #ccc;
+padding: 6px;
+  display: block;
+  width: 100%;
+}
+.label{
+  display: inline-block;
+  width: 30%;
+text-align: right;
+}
+.name{
+  width:70%;
+}

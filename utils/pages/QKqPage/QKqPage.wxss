@@ -1,0 +1,36 @@
+/* QDqPage.wxss */
+page{
+  height: 100%;
+  background:#f3f3f4;
+  
+}
+.wrapper{
+  margin-top: -8px;
+  min-height: 100%;
+  width: 97%;
+  font-size: 14px;
+  font-family: '微软雅黑' ;
+}
+.ul{
+  padding: 20rpx;
+  color: #707070;
+  margin-top: 8px;
+  background: #FFF;
+}
+
+.label,.name{
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 20rpx;
+padding-left:10rpx;
+  word-wrap: break-word;
+  vertical-align:text-top;
+}
+.label{
+  width: 30%;
+  text-align: left;
+}
+.name{
+text-align: left;
+font-weight: bold;
+}

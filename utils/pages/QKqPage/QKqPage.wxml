@@ -1,0 +1,38 @@
+<view class="wrapper">
+<!-- <view class="ul" wx:for="{{dataList}}"> -->
+<view class="ul" >
+<!-- <view class="li">
+<label class="label">上报人：</label>
+<view class="name">{{dataList.creater}}</view>
+</view>
+<view class="li">
+<label class="label">上报时间：</label>
+<view class="name">{{dataList.createDate}}</view>
+</view>  -->
+<view class="li">
+<label class="label">考点名称：</label>
+<view class="name">{{dataList.examPlaceName}}</view>
+</view>
+<view class="li">
+<label class="label">报名总人数:</label>
+<view class="name">{{dataList.examineeSum}}</view>
+</view>
+<view class="li">
+<label class="label">科目一缺考数:</label>
+<view class="name">{{dataList.missSum1}}</view>
+</view>
+<view class="li">
+<label class="label">科目二缺考数:</label>
+<view class="name">{{dataList.missSum2}}</view>
+</view>
+<view class="li">
+<label class="label">科目三缺考数:</label>
+<view class="name">{{dataList.missSum3}}</view>
+</view>
+<view class="li">
+<label class="label">科目四缺考数:</label>
+<view class="name">{{dataList.missSum4}}</view>
+</view>
+
+</view> 
+</view>

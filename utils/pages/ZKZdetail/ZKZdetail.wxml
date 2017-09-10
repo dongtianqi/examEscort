@@ -1,0 +1,105 @@
+<!--BMdetail.wxml-->
+<view class="wapper">
+<view class="list clearfix">
+<image class="photo" src="{{dataList.photoPath}}"></image>
+<view class="tr" style="border-top: 1px dashed #ccc;">
+<label class="label">姓名：</label>
+<view class="name">{{dataList.examineeName}}</view>
+</view>
+<view class="tr">
+<label class="label">性别：</label>
+<view class="name">{{dataList.sex}}</view>
+</view>
+<view class="tr">
+<label class="label">身份证号：</label>
+<view class="name">{{dataList.identity}}</view>
+</view>
+<view class="tr">
+<label class="label">准考证号：</label>
+<view class="name">{{dataList.licence}}</view>
+</view>
+<view class="tr">
+<label class="label">考点名称：</label>
+<view class="name">{{dataList.examPlaceName}}</view>
+</view>
+<view class="tr">
+<label class="label">考场号：</label>
+<view class="name">{{dataList.examRoom}}</view>
+</view>
+<view class="tr">
+<label class="label">座位号：</label>
+<view class="name">{{dataList.seatNumber}}</view>
+</view>
+<view class="tr">
+<label class="label">民族：</label>
+<view class="name">{{dataList.nationality}}</view>
+</view>
+<view class="tr">
+<label class="label">户籍所在地：</label>
+<view class="name">{{dataList.registerProvince}} {{dataList.registerCity}} {{dataList.registerCounty}}</view>
+</view>
+<view class="tr">
+<label class="label">学历：</label>
+<view class="name">{{dataList.learing}}</view>
+</view>
+<view class="tr">
+<label class="label">毕业院校：</label>
+<view class="name">{{dataList.collegeName}}</view>
+</view>
+<view class="tr">
+<label class="label">从业状况：</label>
+<view class="name">{{dataList.practition}}</view>
+</view>
+<view class="tr">
+<label class="label">工作单位：</label>
+<view class="name">{{dataList.workUnit}}</view>
+</view>
+<view class="tr">
+<label class="label">通讯地址：</label>
+<view class="name">{{dataList.postalAddressName}}</view>
+</view>
+<view class="tr">
+<label class="label">电话：</label>
+<view class="name">{{dataList.phone}}</view>
+</view>
+<!-- <view class="tr">
+<label class="label">出生日期：</label>
+<view class="name">{{dataList.birthday}}</view>
+</view>
+<view class="tr">
+<label class="label">答卷文字：</label>
+<view class="name">{{dataList.character}}</view>
+</view>
+<view class="tr">
+<label class="label">考场地址：</label>
+<view class="name">{{dataList.examPlace}}</view>
+</view>
+<view class="tr" style=" border-top: 1px dashed #ccc;">
+<label class="label">网报号：</label>
+<view class="name">{{dataList.examineeId}}</view>
+</view>
+<view class="tr">
+<label class="label">报名地：</label>
+<view class="name">{{dataList.examRegisterName}}</view>
+</view>
+<view class="tr">
+<label class="label">证件类别：</label>
+<view class="name">{{dataList.identityType}}</view>
+</view>
+<view class="tr">
+<label class="label">党派：</label>
+<view class="name">{{dataList.party}}</view>
+</view>
+<view class="tr">
+<label class="label">专业名称：</label>
+<view class="name">{{dataList.professional}}</view>
+</view>
+<view class="tr">
+<label class="label">毕业时间：</label>
+<view class="name">{{dataList.graduation}}</view>
+</view> -->
+
+
+
+</view>
+</view>

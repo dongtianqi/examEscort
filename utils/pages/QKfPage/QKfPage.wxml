@@ -1,0 +1,45 @@
+
+<!--fpage.wxml-->
+<view class="step3-container" style="padding:20rpx 0">
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="tr">
+ <label class="label">登记时间：</label>
+<view class="time">{{time}}</view>
+ </view>
+ <view class="tr">
+  <label class="label">登记地点:</label>
+ <view name="addr" class="addr">{{markers[0].address}}</view>
+ </view>
+  <view class="tr">
+  <label class="label">报名总人数:</label>
+ <view  class="addr">{{dataList.examineeSum}}</view>
+ </view>
+  <view class="tr">
+  <label class="label">科目一缺考数量:</label>
+ <input class="input" name="examineeMissVo.missSum1" type="number" value="{{dataList.missSum1}}" />
+ </view>  
+   <view class="tr">
+  <label class="label">科目二缺考数量:</label>
+ <input class="input" name="examineeMissVo.missSum2" type="number" value="{{dataList.missSum2}}" />
+ </view>  
+   <view class="tr">
+  <label class="label">科目三缺考数量:</label>
+<input class="input" name="examineeMissVo.missSum3" type="number" value="{{dataList.missSum3}}" />
+ </view>  
+   <view class="tr">
+  <label class="label">科目四缺考数量:</label>
+ <input class="input" name="examineeMissVo.missSum4" type="number" value="{{dataList.missSum4}}" />
+ </view>  
+ <!-- <view class="tr" hidden  style="position:relative;">
+  <label class="label">当前位置:</label>
+  <input name="location" class="input" placeholder="" 
+  value="{{location.latitude}},{{location.longitude}}"/>
+ </view> -->
+ <!-- 照片 -->
+
+ <view class="btarea">
+     <button formType="submit" class="bt" type="primary">提交</button>
+    <!-- <button formType="reset" class="bt">重置</button> -->
+ </view>
+</form>
+</view>
