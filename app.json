@@ -14,7 +14,7 @@
     "pages/RXqPage/RXqPage",
     "pages/YCfPage/YCfPage",
     "pages/QDqPage/QDqPage",
-    "pages/JJqPage/JJqPage",
+    "pages/QKqPage/QKqPage",
     "pages/WJqPage/WJqPage",
     "pages/YCqPage/YCqPage",
     "pages/ZKZlist/ZKZlist",
@@ -23,8 +23,7 @@
     "pages/RXdetail/RXdetail",
     "pages/WJlist/WJlist",
     "pages/WJdetail/WJdetail",
-    "pages/SJCFfPage/SJCFfPage",
-    "pages/SJDDfPage/SJDDfPage"
+    "pages/QKfPage/QKfPage"
   ],
   "window": {
     "backgroundTextStyle": "light",

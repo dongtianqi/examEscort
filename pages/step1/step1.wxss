@@ -9,7 +9,7 @@ page{
   color:transparent;
 }
 .userinfo{
- background: url('http://sinotn.imwork.net/SHSFKS/wxPhoto/system/userinfobg.png'); 
+ background: url('https://sfks.lawclass.org/SHSFKS/wxPhoto/system/userinfobg.png'); 
   /* background-position: 50% 60%; */
   background-size: cover;
   width:100%;
@@ -22,7 +22,7 @@ padding-top: 10px;
   z-index: 10;
 }
 .usertext_wrapper{
-  margin-top: 125px;
+  margin-top: 105px;
 
 }
 .usertitle{

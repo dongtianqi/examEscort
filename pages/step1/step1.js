@@ -4,6 +4,7 @@ var util = require('../../utils/util.js')
 var bmap = require('../../utils/bmap-wx.js');
 var app = getApp();
 var weburl = app.globalData.weburl;
+var canUseNow = app.globalData.canUseNow;
 Page({
   onPullDownRefresh: function () {
     console.log("刷新")
@@ -92,6 +93,9 @@ Page({
       var role = wx.getStorageSync('role'); 
       var lastTime = wx.getStorageSync('lastTime');
       var position = wx.getStorageSync('position');
+      var placeid = wx.getStorageSync('placeid');
+      var placename = wx.getStorageSync('placename');
+      
       console.log("首页显示时getstorage的value:" + value + lastTime + position)
       //如果没网，签到时间地点从本地获取
         this.setData({ 
@@ -99,6 +103,8 @@ Page({
           role: role,
           lastTime: lastTime,
           position: position,
+          placeid: placeid,
+          placename: placename
         })
       
     } catch (e) {
@@ -155,36 +161,75 @@ SJZajax:function(){
   }
 },
   //事件处理函数
-  toBMqPage: function () {
-    wx.navigateTo({
-      url: '../BMqPage/BMqPage'
-    })
-  },
+  // toBMqPage: function () {
+  //   wx.navigateTo({
+  //     url: '../BMqPage/BMqPage'
+  //   })
+  // },
   toZKZqPage: function () {
+    if (!canUseNow){
+    util.canUse();
+    }else{
     wx.navigateTo({
       url: '../ZKZqPage/ZKZqPage'
     });
+    }
+ 
   },
   toWJfPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../WJfPage/WJfPage'
     })
+    }
   },
-  toJJqPage:function(){
+  toQKqPage:function(){
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
-      url: '../JJqPage/JJqPage'
+      url: '../QKqPage/QKqPage'
     })
+  }
+  },
+  toQKfPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
+    wx.navigateTo({
+      url: '../QKfPage/QKfPage'
+    })
+  }
   },
   //二
   toRXqPage:function(){
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../RXqPage/RXqPage'
     })
+  }
   },
   toYCfPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../YCfPage/YCfPage'
     })
+  }
+  },
+  toYCqPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
+    wx.navigateTo({
+      url: '../YCqPage/YCqPage'
+    })
+  }
   },
     //获取位置
   getLocation:function(){
@@ -194,7 +239,7 @@ SJZajax:function(){
         success: (res) => {
           var latitude = res.latitude;
           var longitude = res.longitude;
-          console.log("签到位置")
+          console.log("签到位置", latitude, longitude)
           this.setData({
             latitude: latitude,
             longitude: longitude
@@ -319,9 +364,13 @@ SJZajax:function(){
     this.getLocation();
   },
   toMore:function(){
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.switchTab({
       url: '../step2/step2'
     })
+  }
   },
   //回复和详情的ajax,给后台传消息已读状态。
   repAjax:function(data){
@@ -369,7 +418,7 @@ SJZajax:function(){
       success: (res) => {
         console.log("rAndDajax返回值：", res)
         if (res.data != null) {
-          if (res.data.dataStatus == "1" && res.data.dataMain) {
+          if (res.data.dataStatus == "1") {
             //模态窗
             var content;
             var rep = res.data.dataMain;
@@ -409,6 +458,9 @@ SJZajax:function(){
   },
   //回复
   reply:function(e){
+    if (!canUseNow) {
+      util.canUse();
+    } else {
 var tel = e.target.dataset.tel;
     var id = e.target.dataset.id;
   this.setData({
@@ -416,6 +468,7 @@ var tel = e.target.dataset.tel;
     telnum:tel,
     id:id
   });
+    }
   } ,
   //
   detail:function(e){

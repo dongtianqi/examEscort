@@ -7,8 +7,9 @@ page{
 .wrapper{
   margin-top: -8px;
   min-height: 100%;
+  width: 97%;
   font-size: 14px;
-  font-family: '微软雅黑';
+  font-family: '微软雅黑' ;
 }
 .ul{
   padding: 20rpx;
@@ -26,22 +27,10 @@ padding-left:10rpx;
   vertical-align:text-top;
 }
 .label{
-  width: 28%;
+  width: 30%;
+  text-align: left;
 }
 .name{
-  width:40%;
+text-align: left;
 font-weight: bold;
-}
-.li{
-  position: relative;
-}
-
-
-.photo{
-width: 210rpx;
-height: 290rpx; 
-position: absolute;
-left: 500rpx;
-top: 24rpx;
-z-index: 10;
 }

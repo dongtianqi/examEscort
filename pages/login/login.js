@@ -127,7 +127,9 @@ Page({
             wx.setStorageSync('roleCode', dataMain.linkGroup.roleCode);
             wx.setStorageSync('position', dataMain.lastLoginAddr);
             wx.setStorageSync('lastTime', dataMain.lastLoginDate);
-
+            wx.setStorageSync('placeid', dataMain.examPlaceVo.examPlace);
+            wx.setStorageSync('placename', dataMain.examPlaceVo.examPlaceName);
+            wx.setStorageSync('area', dataMain.examArea);
           } catch (e) {
             console.log("setStorage异常原因："+e)
           }

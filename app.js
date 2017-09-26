@@ -26,8 +26,10 @@ App({
   //   }
   // },
   globalData:{
-    weburl:"https://sinotn.imwork.net/",
-     //weburl:"http://192.168.12.195/",
-    userInfo:null
+    weburl:"https://sfks.lawclass.org/", 
+    // weburl:"https://sinotn.imwork.net/",
+    //  weburl:"http://192.168.12.67:8080/",
+    userInfo:null,
+    canUseNow:true
   }
 })

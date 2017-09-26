@@ -3,7 +3,7 @@ page{
   height:100%;
 }
 .wapper{
-  font-size: 12px;
+  font-size: 14px;
   color: #707070;
   background: #f3f3f4;
  min-height:100%;

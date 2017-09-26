@@ -1,6 +1,8 @@
 // step2.js
-var app=getApp();
-
+var app = getApp();
+var util = require('../../utils/util.js')
+var weburl = app.globalData.weburl;
+var canUseNow = app.globalData.canUseNow;
 Page({
   /**
    * 页面的初始数据
@@ -11,62 +13,95 @@ Page({
   //事件处理函数
   //一
   toBMqPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../BMqPage/BMqPage'
     })
+    }
   },
   toZKZqPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../ZKZqPage/ZKZqPage'
     });
+    }
   },
   toRXqPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../RXqPage/RXqPage'
     })
+  }
   },
   //二
   toYCfPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../YCfPage/YCfPage'
     })
+    }
   },
   toYCqPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../YCqPage/YCqPage'
     })
+    }
   },
   toWJfPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../WJfPage/WJfPage'
     })
+    }
   },
   toWJqPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
       url: '../WJqPage/WJqPage'
     })
+    }
   },
   //三
-  toSJCFfPage: function () {
+  toQKfPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
-      url: '../SJCFfPage/SJCFfPage'
+      url: '../QKfPage/QKfPage'
     })
+    }
   },
-  toSJDDfPage: function () {
+  toQKqPage: function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     wx.navigateTo({
-      url: '../SJDDfPage/SJDDfPage'
+      url: '../QKqPage/QKqPage'
     })
-  },
-  toJJqPage: function () {
-    wx.navigateTo({
-      url: '../JJqPage/JJqPage'
-    })
+    }
   },
 //四
   toQDqPage:function(){
+
     wx.navigateTo({
       url: '../QDqPage/QDqPage'
     })
+    
   },
   zhuxiao:function(){
     try {

@@ -8,12 +8,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imageList: []
+    imageList: [],
+    array: ['现场布置情况', '考生入场情况', '试卷回收情况', '其他']
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    try {
+      var placename = wx.getStorageSync("placename");
+      var placeid = wx.getStorageSync("placeid");
+      this.setData({
+        placename: placename,
+        placeid: placeid
+      })
+      }catch(e){
+      }
     this.getLocation();
     this.getAddress();
   },
@@ -46,23 +56,32 @@ Page({
       }
     })
   },
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
   formSubmit: function (e) {
     this.getLocation();
     this.getAddress();
     var data = e.detail.value;
-    if (data["examExceptionVo.exceptionName"] &&
-      data["examExceptionVo.exceptionDescript"] &&
-      data["examExceptionVo.examPlaceName"]){
-
+    if (this.data.array[this.data.index] && 
+    data["examExceptionVo.exceptionDescript"]){
     try {
       var username = wx.getStorageSync("username");
       var userid = wx.getStorageSync("userid");
-      if (username&&userid) {
+      var placename = wx.getStorageSync("placename");
+      var placeid = wx.getStorageSync("placeid");
+      if (username && userid && placename && placeid) {
+        data["examExceptionVo.examPlaceId"] = placeid;
+        data["examExceptionVo.examPlaceName"] = placename;
         data["examExceptionVo.alterUserName"] = username;
         data["examExceptionVo.linkManId"] = userid;
         data["examExceptionVo.loginAddr"] = this.data.markers[0].address,
         data["examExceptionVo.loginLat"] = this.data.latitude,
           data["examExceptionVo.loginLng"] = this.data.longitude,
+          data["examExceptionVo.exceptionName"] = this.data.array[this.data.index],
+          
           data["examExceptionVo.photoPath"] = weburl+"SHSFKS/wxPhoto/"+this.data.imgurl,  
         console.log("上报前端传值", data);
         //data.photo = this.data.photo;
@@ -81,6 +100,9 @@ Page({
                 wx.showToast({
                   title: "上报成功",
                   duration: 2000
+                })
+                wx.redirectTo({
+                  url: '../YCqPage/YCqPage',
                 })
               }
               else {

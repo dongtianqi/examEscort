@@ -27,7 +27,7 @@
 
 </view>
 <view class="list clearfix" wx:for="{{dataList}}">
-<image class="photo" src="{{item.relativePath}}" style="float:left"></image>
+<image class="photo1" src="{{item.relativePath}}" style="float:left"></image>
 <view class="info-wapper">
 <view class="tr">
 <view class="name">{{item.subject}}</view>

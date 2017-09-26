@@ -1,18 +1,28 @@
 <!--fpage.wxml-->
 <view class="step3-container" style="padding:20rpx 0">
 <form bindsubmit="formSubmit" bindreset="formReset">
-<view class="tr">
- <label class="label">异常名称：</label>
- <input name="examExceptionVo.exceptionName" class="input" placeholder=""/>
-</view>
- <view class="tr">
-   <label class="label">异常描述:</label>
- <input name="examExceptionVo.exceptionDescript" class="input" placeholder=""/>
- </view>
+  <!-- <view class="tr" hidden="true">
+  <label class="label">考点id:</label>
+ <input  style="flex:5" value="{{placeid}}"/>
+ </view> -->
  <view class="tr">
   <label class="label">考点名称:</label>
- <input name="examExceptionVo.examPlaceName" class="input" placeholder=""/>
+ <view  style="flex:5">{{placename}}</view>
  </view>
+<view class="tr">
+ <label class="label">上报类型：</label>
+   <picker class="input" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      {{array[index]}}
+    </view>
+  </picker>
+ <!-- <input name="examExceptionVo.exceptionName" class="input" placeholder=""/> -->
+</view>
+ <view class="tr">
+   <label class="label">情况描述:</label>
+ <input name="examExceptionVo.exceptionDescript" class="input" placeholder=""/>
+ </view>
+
 <!-- 照片 -->
 
 

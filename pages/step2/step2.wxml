@@ -4,10 +4,10 @@
 <view class="func-part" style="margin:0;border-top: 1px solid #f3f3f4;">
 <view class="func-title">考试信息查询</view>
 <view class="ul clearfix">
-<view class="li" hover-class="gray" bindtap="toBMqPage">
+<!-- <view class="li" hover-class="gray" bindtap="toBMqPage">
 <image class="icon" src="./img/baoming.png"></image>
 <text class="func-name">报名查询</text>
-</view>
+</view> -->
 <view class="li" hover-class="gray" bindtap="toZKZqPage">
 <image class="icon" src="./img/kaozheng.png"></image>
 <text class="func-name">准考证查询</text>
@@ -21,42 +21,42 @@
 
 <!-- 二 -->
 <view class="func-part" >
-<view class="func-title">异常违纪管理</view>
+<view class="func-title">上报信息管理</view>
 <view class="ul clearfix">
 <view class="li" hover-class="gray" bindtap="toYCfPage">
 <image class="icon" src="./img/ycsb.png"></image>
-<text class="func-name">异常上报</text>
+<text class="func-name">信息上报</text>
 </view>
 <view class="li" hover-class="gray" bindtap="toYCqPage">
 <image class="icon" src="./img/yccx.png"></image>
-<text class="func-name">异常查询</text>
+<text class="func-name">上报查询</text>
 </view>
-<view class="li" hover-class="gray" bindtap="toWJfPage">
+<!-- <view class="li" hover-class="gray" bindtap="toWJfPage">
 <image class="icon" src="./img/wjsb.png"></image>
 <text class="func-name">违纪上报</text>
 </view>
 <view class="li" hover-class="gray" bindtap="toWJqPage">
 <image class="icon" src="./img/wjcx.png"></image>
 <text class="func-name">违纪查询</text>
-</view>
+</view> -->
 </view>
 </view>
 
 <!-- 三 -->
 <view class="func-part" >
-<view class="func-title">试卷交接管理</view>
+<view class="func-title">缺考管理</view>
 <view class="ul clearfix">
-<view class="li" hover-class="gray" bindtap="toSJCFfPage">
+<!-- <view class="li" hover-class="gray" bindtap="toSJCFfPage">
 <image class="icon" src="./img/jjgl.png"></image>
 <text class="func-name">试卷出发登记</text>
-</view>
-<view class="li" hover-class="gray" bindtap="toSJDDfPage">
+</view> -->
+<view class="li" hover-class="gray" bindtap="toQKfPage">
 <image class="icon" src="./img/jjgl.png"></image>
-<text class="func-name">试卷到达登记</text>
+<text class="func-name">缺考登记</text>
 </view>
-<view class="li" hover-class="gray" bindtap="toJJqPage">
+<view class="li" hover-class="gray" bindtap="toQKqPage">
 <image class="icon" src="./img/jjcx.png"></image>
-<text class="func-name">交接查询</text>
+<text class="func-name">缺考查询</text>
 </view>
 
 </view>

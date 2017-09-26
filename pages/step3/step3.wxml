@@ -34,7 +34,7 @@
 <image wx:if="{{!isSelState}}" src="../img/tel.svg" data-tel="{{items.tel}}" bindtap="tel" class="tel"></image>
 <image wx:else src="" class="tel"></image>
 
-<image wx:if="{{!isSelState&&quanXian}}" src="../img/msg.svg" data-tel="{{items.tel}}" data-id="{{items.id}}" bindtap="msg" class="msg"></image>
+<image wx:if="{{!isSelState&&quanXian}}" src="../img/msg.svg" data-tel="{{items.tel}}" data-id="{{items.linkManId}}" bindtap="msg" class="msg"></image>
 <image wx:else src="" class="msg"></image>
 </view>
 </view>

@@ -1,11 +1,14 @@
 <view class="wrapper">
 <view class="ul" wx:for="{{dataList}}">
 <view class="li">
-<label class="label">异常名称：</label>
+<label class="label">上报类型：</label>
 <view class="name">{{item.exceptionName}}</view>
+
+<image class="photo" width="100" height="100" src="{{item.photoPath}}" data-src="{{item.photoPath}}"  bindtap="previewImage" ></image>
+
 </view>
 <view class="li">
-<label class="label">异常描述：</label>
+<label class="label">上报描述：</label>
 <view class="name">{{item.exceptionDescript}}</view>
 </view>
 <view class="li">
@@ -18,7 +21,8 @@
 </view>
 <view class="li">
 <label class="label">上报时间：</label>
-<view class="name">{{item.createDate}}</view>
+<view class="name" style="width:70%;">{{item.createDate}}</view>
 </view>
+
 </view>
 </view>

@@ -12,30 +12,24 @@ Page({
    */
   onLoad: function (options) {
     try {
-      var userid = wx.getStorageSync('userid')
-      if (userid) {
+      var placeid = wx.getStorageSync('placeid')
+      if (placeid) {
         wx.request({
-          url: weburl + 'SHSFKS/wx/findExamException.action', //仅为示例，并非真实的接口地址
-          data: {"examExceptionVo.linkManId": userid},
-          method:"POST",
+          url: weburl + 'SHSFKS/wx/findExamMiss.action', //仅为示例，并非真实的接口地址
+          data: { "examineeMissVo.examPlaceId": placeid },
+          method: "POST",
           header: {
             "content-type": 'application/x-www-form-urlencoded'
           },
           success: (res) => {
-            console.log("yc查询后台返值：", res)
-            if (res.data != null) {
+            console.log("QK查询后台返值：", res)
+
               var dataMain = res.data.dataMain;
-             
+
               if (res.data.dataStatus == "1") {
                 this.setData({
                   dataList: dataMain
                 });
-                if (dataMain == null || dataMain.length==0){
-                  wx.showToast({
-                    title: "查询结果为空",
-                    duration: 2000
-                  })
-                }
               }
               else {
                 if (res.data.errorMsg != null
@@ -46,7 +40,7 @@ Page({
                   })
                 }
               }
-            }
+            
           },
           fail: (res) => {
             wx.showToast({
@@ -59,12 +53,5 @@ Page({
       }
     } catch (e) {
     }
-  },
-  previewImage: function (e) {
-    var urls=[];
-    urls.push(e.target.dataset.src);
-    wx.previewImage({
-      urls: urls
-    })
   }
 })

@@ -1,7 +1,7 @@
 <!--step1.wxml-->
 <view class="step1-container" style="padding-top:0;">
 <text wx:if="{{showTitle}}" class="usertext fixTitle" style="text-align:center">上海国家司法考试考务安全系统</text>
-<view  class="userinfo" style="position:relative;height:290px;top:0px;">
+<view  class="userinfo" style="position:relative;height:300px;top:0px;">
 <view class="guohui">
 <image src="./img/guohui.png" style="float:left;width:35px;height:35px;"></image>
 <view style="float:left;padding:0 0 0 8px;height:35px;">
@@ -14,6 +14,8 @@
 <text class="" style="font-size:16px;color:#90f6ff;text-shadow:none;">{{username}}</text>
 <text class="" style="font-size:10px;text-shadow:none;">（{{role}}）</text>
 </view>
+
+<text class="usertext" style="font-size:12px;">所在考点: {{placename}}</text>
 <text class="usertext" style="font-size:12px;">最后签到时间：{{lastTime}}</text>
 <text class="usertext" style="font-size:12px;">最后签到地点：{{position}}</text>
 <text class="usertext" style="font-size:12px;">天气：{{temperature}} {{weatherDesc}}</text>
@@ -22,10 +24,7 @@
 
 
 <view class="gongneng clearfix">
-<view class="li" hover-class="gray" bindtap="toBMqPage">
-<image src="./img/baoming.png" class="gnimg" ></image>
-<text class="gntext">报名信息</text>
-</view>
+
 <view class="li" hover-class="gray" bindtap="toZKZqPage">
 <image src="./img/zhunkao.png" class="gnimg"></image>
 <text class="gntext">准考证</text>
@@ -36,20 +35,25 @@
 </view>
 <view class="li" hover-class="gray" bindtap="toYCfPage">
 <image src="./img/yichang.png" class="gnimg"></image>
-<text class="gntext">异常上报</text>
+<text class="gntext">信息上报</text>
 </view>
-<view class="li" hover-class="gray" bindtap="toWJfPage">
+<view class="li" hover-class="gray" bindtap="toYCqPage">
 <image src="./img/weiji.png" class="gnimg"></image>
-<text class="gntext">违纪上报</text>
+<text class="gntext">上报查询</text>
 </view>
-<view class="li" hover-class="gray" bindtap="toJJqPage">
+<view class="li" hover-class="gray" bindtap="toQKfPage">
+<image src="./img/baoming.png" class="gnimg" ></image>
+<text class="gntext">缺考上报</text>
+</view>
+<view class="li" hover-class="gray" bindtap="toQKqPage">
 <image src="./img/shijuan.png" class="gnimg"></image>
-<text class="gntext">交接查询</text>
+<text class="gntext">缺考查询</text>
 </view>
 <view class="li" hover-class="gray" bindtap="qiandao">
 <image src="./img/qiandao.png" class="gnimg"></image>
 <text class="gntext">签到</text>
 </view>
+
 <view class="li" hover-class="gray" bindtap="toMore">
 <image src="./img/more.svg" class="gnimg"></image>
 <text class="gntext">更多</text>
@@ -63,7 +67,7 @@
 </view>
 <view class="name-wrapper">
 <text class="name">{{item.creater}}</text>
-<text class="time" style="color:#808080">{{item.acceptDate}}</text>
+<text class="time" style="color:#808080">{{item.smsTask.waitSendDate}}</text>
 </view>
 </view>
 <view class="thing">{{item.message}}</view>

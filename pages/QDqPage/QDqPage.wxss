@@ -19,6 +19,9 @@ page{
   display: inline-block;
   padding: 14rpx;
 }
+.name{
+  font-weight: bold;
+}
 .label{
   width:100px;
 }

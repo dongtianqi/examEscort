@@ -1,6 +1,8 @@
 // step3.js
 var app = getApp();
+var util = require('../../utils/util.js')
 var weburl = app.globalData.weburl;
+var canUseNow = app.globalData.canUseNow;
 Page({
   /**
    * 页面的初始数据
@@ -16,7 +18,9 @@ Page({
   },
   onPullDownRefresh: function () {
     console.log("刷新")
-    this.getLXR();
+    if (!this.data.isSelState){
+        this.getLXR();
+    }
     wx.stopPullDownRefresh()
   },
   /**
@@ -96,6 +100,9 @@ wx.makePhoneCall({
 })
   },
   msg : function (e) {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     var tel = e.target.dataset.tel;
     var id = e.target.dataset.id;
     var msgNums=this.data.msgNums;
@@ -107,7 +114,7 @@ wx.makePhoneCall({
       msgNums:msgNums,
       msgIds: msgIds
     });
-
+    }
   },
   groSelEvent:function(e){
     var groupindex = e.currentTarget.dataset.groupindex;
@@ -277,6 +284,9 @@ wx.makePhoneCall({
     })
   },
   selectAll:function () {
+    if (!canUseNow) {
+      util.canUse();
+    } else {
     this.setData({
       isSelState: true,
       isSelectAll: !this.data.isSelectAll
@@ -313,6 +323,7 @@ wx.makePhoneCall({
     this.setData({
       groupList: groupList
     })
+    }
   },
   cancel:function(){
     console.log("调用cancel方法");

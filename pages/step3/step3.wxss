@@ -2,7 +2,8 @@
 .step3-container{
   padding:50rpx 40rpx;
   position: flex;
-  font-size: 12px;
+  font-size: 13px;
+  font-family: '微软雅黑';
 }
 .group {
   position:relative;
